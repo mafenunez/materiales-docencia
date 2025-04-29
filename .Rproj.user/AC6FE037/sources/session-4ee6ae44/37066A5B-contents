@@ -1,0 +1,555 @@
+---
+tpagetitle: "Análisis Abril"
+author: "Coordinación"
+
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+      
+format: 
+  revealjs:
+    logo: images/Imagen2.png
+    slide-number: true
+    theme: [pp.scss]
+    title-slide-attributes:
+      visibility: false
+#      data-background-image: images/portada.jpg
+#      data-background-size: cover
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
+---
+
+## 
+
+:::: {.columns .v-center-container}
+::: {.column width=40%}
+![](images/Imagen3.png){width="80%" fig-align="right"} <br>
+
+![](images/Imagen2.png){width="80%" fig-align="left"}
+
+:::
+::: {.column width=60%}
+## [***[Análisis Abril]{.purple}*** <br> Casos reportados en la planilla de seguimiento]{.black}
+
+------------------------------------------------------------------------
+
+
+María Fernanda Núñez y Catalina Poblete
+<br>
+*Coordinadoras equipo de tutores* 
+
+:::
+::::
+
+```{r, echo=FALSE}
+pacman::p_load(readr, tidyverse, dplyr, sjmisc, car, sjlabelled, stargazer, haven, janitor)
+
+antropo <- read_csv("input/antropo.csv")
+socio <- read_csv("input/socio.csv")
+pep <- read_csv("input/pep.csv")
+#ts <- read_csv("input/ts.csv")
+psico <- read_csv("input/psico.csv")
+
+antropo <- antropo %>% clean_names()
+socio <- socio %>% clean_names()
+psico <- psico %>% clean_names()
+pep <- pep %>% clean_names()
+```
+
+# [**Antropología**]{.purple} <br> <br> [ % de casos según **modalidad** y **motivo**]{.black}{data-background-color="#CABFFF"}
+
+
+##
+
+<div style="font-size: 90%;">
+
+```{r}
+
+
+
+antropo <- antropo %>%
+  mutate(
+    modalidad = case_when(
+      modalidad == "Taller" ~ "Taller",
+      modalidad %in% c("Tutoría grupal", "Tutoría Grupal / Grupo de Estudio") ~ "Tutoría Grupal / Grupo de Estudio",
+      modalidad %in% c("Tutoria individual", "Tutoría individual", "Tutoría Individual") ~ "Tutoría Individual",
+      TRUE ~ modalidad  # mantiene cualquier otra categoría tal como está
+    )
+  )
+
+antropo$modalidad <- set_label(x = antropo$modalidad,label = 
+                                                   "Modalidad")
+antropo$tematica <- set_label(x = antropo$tematica,label = 
+                                 "Temática")
+
+antropo %>%
+  sjPlot::sjtab(modalidad,
+                tematica,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+# [**Antropología**]{.purple} <br> <br>[ % de casos según **modalidad** y **mes de atención**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+```{r}
+antropo <- antropo %>%
+  mutate(
+    fecha_mes = case_when(
+      grepl("/03/", fecha) ~ "marzo",
+      grepl("/04/", fecha) ~ "abril",
+      TRUE ~ "otro"  # por si quieres capturar otros meses también
+    )
+  )
+antropo$fecha_mes <- set_label(x = antropo$fecha_mes,label = 
+                                 "Mes")
+
+antropo %>%
+  sjPlot::sjtab(modalidad,
+                fecha_mes,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+# [**Antropología**]{.purple} <br> <br>[ % de casos según **modalidad** y **tutora**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+::: {.columns}
+::: {.column width="80%"}
+
+<div style="font-size: 80%;">
+```{r}
+antropo$tutor_a <- set_label(x = antropo$tutor_a,label = 
+                                 "Tutores")
+antropo %>%
+  sjPlot::sjtab(tutor_a,
+                modalidad,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+</div>
+:::
+:::{.column width="20%"}
+<br />
+
+:::{.content-box-purple}
+En varios participaron las 4 tutoras.  
+:::
+:::
+:::
+
+# [**Antropología**]{.purple} <br> <br>[ % de casos según **tutora** y **N° de la sesión**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+<div style="font-size: 90%;">
+
+```{r}
+antropo$numero_de_sesion <- set_label(x = antropo$numero_de_sesion,label = 
+                                 "N° Sesión")
+antropo %>%
+  sjPlot::sjtab(tutor_a,
+                numero_de_sesion,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+# [**Sociología**]{.purple}<br> <br> [ % de casos según **modalidad** y **motivo**]{.black}{data-background-color="#CABFFF"}
+
+
+## 
+```{r, echo=FALSE}
+
+socio$modalidad <- set_label(x = socio$modalidad,label = 
+                                                   "Modalidad")
+
+
+socio$tematica <- set_label(x = socio$tematica,label = 
+                                 "Temática")
+socio %>%
+  sjPlot::sjtab(modalidad,
+                tematica,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+# [**Sociología**]{.purple}<br> <br> [ % de casos según **modalidad** y **mes de atención**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+```{r}
+socio <- socio %>%
+  mutate(
+    fecha_mes = case_when(
+      grepl("/03/", fecha) ~ "marzo",
+      grepl("/04/", fecha) ~ "abril",
+      TRUE ~ "otro"  # por si quieres capturar otros meses también
+    )
+  )
+
+socio$fecha_mes <- set_label(x = socio$fecha_mes,label = 
+                                 "Mes")
+
+
+socio %>%
+  sjPlot::sjtab(modalidad,
+                fecha_mes,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+
+# [**Sociología**]{.purple} <br> <br>[ % de casos según **modalidad** y **tutor/a**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+::: {.columns}
+::: {.column width="70%"}
+
+```{r}
+socio$tutor_a <- set_label(x = socio$tutor_a,label = 
+                                 "Tutores")
+socio %>%
+  sjPlot::sjtab(tutor_a,
+                modalidad,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+:::
+:::{.column width="30%"}
+<br />
+
+:::{.content-box-purple}
+En varios participaron las 4 tutores en un taller, pero tambien en duplas para esas 3 tutorías individuales.  
+:::
+:::
+:::
+
+
+# [**Sociología**]{.purple} <br> <br>[ % de casos según **tutor/a** y **N° de la sesión**]{.black}{data-background-color="#CABFFF"}
+
+## 
+```{r}
+socio$numero_de_sesion <- set_label(x = socio$numero_de_sesion,label = 
+                                 "N° Sesión")
+socio %>%
+  sjPlot::sjtab(tutor_a,
+                numero_de_sesion,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+
+# [**Pedagogía en Educación Parvularia**]{.purple} <br> <br>[ % de casos según **modalidad** y **motivo**]{.black}{data-background-color="#CABFFF"}
+
+
+
+##
+
+<div style="font-size: 90%;">
+
+```{r, echo=FALSE}
+pep$modalidad <- set_label(x = pep$modalidad,label = 
+                                                   "Modalidad")
+
+
+pep$tematica <- set_label(x = pep$tematica,label = 
+                                 "Temática")
+
+pep %>%
+  sjPlot::sjtab(modalidad,
+                tematica,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+# [**Pedagogía en Educación Parvularia**]{.purple}<br><br> [ % de casos según **modalidad** y **mes de atención**]{.black}{data-background-color="#CABFFF"}
+## 
+
+```{r}
+pep <- pep %>%
+  mutate(
+    fecha_mes = case_when(
+      grepl("/03/", fecha) ~ "marzo",
+      grepl("/04/", fecha) ~ "abril",
+      TRUE ~ "otro"  # por si quieres capturar otros meses también
+    )
+  )
+
+pep$fecha_mes <- set_label(x = pep$fecha_mes,label = 
+                                 "Mes")
+
+pep %>%
+  sjPlot::sjtab(modalidad,
+                fecha_mes,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+# [**Pedagogía en Educación Parvularia**]{.purple} <br><br>[ % de casos según **modalidad** y **tutora**]{.black}{data-background-color="#CABFFF"}
+
+## 
+::: {.columns}
+::: {.column width="70%"}
+```{r}
+pep$tutor_a <- set_label(x = pep$tutor_a,label = 
+                                 "Tutores")
+pep %>%
+  sjPlot::sjtab(tutor_a,
+                modalidad,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+:::
+:::{.column width="30%"}
+<br />
+
+:::{.content-box-purple}
+En varios participaron las 3 tutoras.  
+:::
+:::
+:::
+
+# [**Pedagogía en Educación Parvularia**]{.purple} <br> <br>[ % de casos según **tutora** y **N° de la sesión**]{.black}{data-background-color="#CABFFF"}
+
+## 
+```{r}
+pep$numero_de_sesion <- set_label(x = pep$numero_de_sesion,label = 
+                                 "N° Sesión")
+pep %>%
+  sjPlot::sjtab(tutor_a,
+                numero_de_sesion,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+# Trabajo Social {data-background-color="#CABFFF"}
+
+
+```{r, echo=FALSE}
+#ts %>%
+#  sjPlot::sjtab(Modalidad,
+ #               Temática,
+  #              encoding = "UFT-8",
+   #             show.col.prc = TRUE
+    #            )
+```
+
+# [**Psicología**]{.purple} <br> <br> [ % de casos según **modalidad** y **motivo**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+<div style="font-size: 90%;">
+
+```{r, echo=FALSE}
+
+psico$modalidad <- set_label(x = psico$modalidad,label = 
+                                                   "Modalidad")
+
+
+psico$tematica <- set_label(x = psico$tematica,label = 
+                                 "Temática")
+psico %>%
+  sjPlot::sjtab(modalidad,
+                tematica,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
+# [**Psicología**]{.purple}<br> <br>[ % de casos según **modalidad** y **mes de atención**]{.black}{data-background-color="#CABFFF"}
+## 
+
+```{r}
+psico <- psico %>%
+  mutate(
+    fecha_mes = case_when(
+      grepl("/03/", fecha) ~ "marzo",
+      grepl("/04/", fecha) ~ "abril",
+      TRUE ~ "otro"  # por si quieres capturar otros meses también
+    )
+  )
+
+psico$fecha_mes <- set_label(x = psico$fecha_mes,label = 
+                                 "Mes")
+
+psico %>%
+  sjPlot::sjtab(modalidad,
+                fecha_mes,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+# [**Psicología**]{.purple} <br> <br>[ % de casos según **modalidad** y **tutor/a**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+::: {.columns}
+::: {.column width="80%"}
+<div style="font-size: 80%;"> 
+```{r}
+  
+psico$tutor_a <- set_label(x = psico$tutor_a,label = 
+                                 "Tutores")
+psico %>%
+  sjPlot::sjtab(tutor_a,
+                modalidad,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+</div>
+:::
+:::{.column width="20%"}
+<br />
+
+:::{.content-box-purple}
+En varios participaron los 5 tutores.  
+:::
+:::
+:::
+# [**Psicología**]{.purple} <br> <br> [ % de casos según **tutor/a** y **N° de la sesión**]{.black}{data-background-color="#CABFFF"}
+
+## 
+
+<div style="font-size: 80%;"> 
+
+```{r}
+psico$numero_de_sesion <- set_label(x = psico$numero_de_sesion,label = 
+                                 "N° Sesión")
+psico %>%
+  sjPlot::sjtab(tutor_a,
+                numero_de_sesion,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+
+```
+
+
+# [**Solicitudes**]{.purple}
+```{r}
+soli <- read.csv("input/soli.csv") %>% clean_names()
+
+tipo_de_atencion = round(prop.table(table(categorias=soli$tipo_de_atencion)),2) 
+tipo_de_atencion = as.data.frame(tipo_de_atencion)
+#tipo_de_atencion$categorias <- factor(tipo_de_atencion$categorias, levels = c(1, 2), labels = c("Tutoría Individual", "Tutoría Grupal")) 
+plot_tipo_de_atencion<-ggplot(tipo_de_atencion,aes(x=2,y=-Freq, fill=categorias))+  
+  geom_bar(stat = "identity",  
+           color="white")+    
+  geom_text(aes(label = scales::percent(Freq)),  
+            position=position_stack(vjust=0.5),color="black",size=4.5)+   coord_polar(theta = "y")+ 
+  scale_fill_brewer(palette = "Blues")+  
+  theme_void()+  
+  theme(legend.title = element_blank(),
+    plot.title = element_text(size=12, face="bold", hjust=0.5))+
+  xlim(0.5,2.5) +  
+  labs(title="Tipo" ) 
+
+carrera = round(prop.table(table(categorias=soli$carrera)),2) 
+carrera = as.data.frame(carrera)
+#carrera$categorias <- factor(carrera$categorias, levels = c(1, 2), labels = c("Tutoría Individual", "Tutoría Grupal")) 
+plot_carrera<-ggplot(carrera,aes(x=2,y=-Freq, fill=categorias))+  
+  geom_bar(stat = "identity",  
+           color="white")+    
+  geom_text(aes(label = scales::percent(Freq)),  
+            position=position_stack(vjust=0.5),color="black",size=4.5)+   coord_polar(theta = "y")+ 
+  scale_fill_brewer(palette = "Blues")+  
+  theme_void()+  
+  theme(legend.title = element_blank(),
+    plot.title = element_text(size=12, face="bold", hjust=0.5))+
+  xlim(0.5,2.5) +  
+  labs(title="Carrera" ) 
+
+motivo = round(prop.table(table(categorias=soli$x_a_cual_de_las_siguientes_categorias_se_relaciona_tu_motivo_de_consulta_tutorial)),2) 
+motivo = as.data.frame(motivo)
+#carrera$categorias <- factor(carrera$categorias, levels = c(1, 2), labels = c("Tutoría Individual", "Tutoría Grupal")) 
+plot_motivo<-ggplot(motivo,aes(x=2,y=-Freq, fill=categorias))+  
+  geom_bar(stat = "identity",  
+           color="white")+    
+  geom_text(aes(label = scales::percent(Freq)),  
+            position=position_stack(vjust=0.5),color="black",size=4.5)+   coord_polar(theta = "y")+ 
+  scale_fill_brewer(palette = "Blues")+  
+  theme_void()+  
+  theme(legend.title = element_blank(),
+    plot.title = element_text(size=12, face="bold", hjust=0.5))+
+  xlim(0.5,2.5) +  
+  labs(title="Temática" ) 
+
+
+```
+
+## [Solicitudes por carrera]{.purple}
+
+```{r}
+plot_carrera
+```
+
+## [Solicitues por tipo de atención]{.purple}
+```{r}
+plot_tipo_de_atencion
+```
+
+## [Solicitudes por temática]{.purple}
+```{r}
+plot_motivo
+```
+
+##
+<div style="font-size: 80%;">
+```{r}
+
+soli$carrera <- set_label(x = soli$carrera,label = 
+                                                   "Carrera")
+soli$tipo_de_atencion <- set_label(x = soli$tipo_de_atencion,label = 
+                                                   "Tipo")
+
+soli %>%
+  sjPlot::sjtab(carrera,
+                tipo_de_atencion,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+## 
+<div style="font-size: 80%;">
+```{r}
+soli$x_a_cual_de_las_siguientes_categorias_se_relaciona_tu_motivo_de_consulta_tutorial <- set_label(x = soli$x_a_cual_de_las_siguientes_categorias_se_relaciona_tu_motivo_de_consulta_tutorial,label = 
+                                                   "Temática")
+
+soli %>%
+  sjPlot::sjtab(carrera,
+                x_a_cual_de_las_siguientes_categorias_se_relaciona_tu_motivo_de_consulta_tutorial,
+                encoding = "UFT-8",
+                show.col.prc = TRUE
+                )
+```
+
