@@ -1,0 +1,18 @@
+ingrediente_1 <- c(2,3,4,5,6,7,4,3,8,1) #10 casos
+ingrediente_2 <- c(100, 200, 50, 30, 100, 91, 87, 100, 55, 61)
+ingrediente_3 <- c(10, 25,30,35,35,20,15,10,20, 25)
+ingrediente_4 <- c("pisca", "cucharadita", "cucharada", "pisca", "pisca", "cucharadita",
+                  "cucharadita", "cucharada", "cucharada", "cucharada")
+
+ID <- c("hormiga_a","hormiga_b", "hormiga_c", "hormiga_d", "hormiga_e", "hormiga_f", 
+        "hormiga_g", "hormiga_h", "hormiga_i", "hormiga_j")
+
+
+plato <- data.frame(ingrediente_1, ingrediente_2,ingrediente_3, ingrediente_4, ID)
+
+sjmisc::frq(plato$ingrediente_4) #sin embargo, esta desordenado
+
+# para que utilizamos: 
+
+
+# ahora si solo seleccionamos 

@@ -1,0 +1,10 @@
+"0","#| echo: true
+#| label: crear base
+plato <- data.frame(ingrediente_1, 
+                    ingrediente_2,
+                    ingrediente_3, 
+                    ingrediente_4)%>%beep(1)
+"
+"2","Error in sound < 0 || sound == ""none"" : 
+  'length = 40' in coercion to 'logical(1)'
+"

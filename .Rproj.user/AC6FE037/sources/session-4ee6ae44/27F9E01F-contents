@@ -1,0 +1,196 @@
+---
+title: "Taller 6"
+fontsize: 12pt
+#bibliography: "../input/mini-proyecto.bib"
+#csl: "input/bib/apa6.csl"
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 6
+    toc-expand: 6
+    toc-title: Contenidos
+    number-sections: false
+    number-depth: 6
+    theme: 
+    - edumer.scss
+    - sandstone
+    title-block-banner: true
+editor: visual
+lang: es
+---
+
+# 0. cargar paquetes
+
+```{r}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car, # para recodificar datos
+               magrittr,
+               summarytools, 
+               gginference)# para manipular datos
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+# 1. cargar datos
+
+```{r}
+load("input/elsoc.RData")
+```
+
+# 2. ANALISIS BIVARIADO: CATEOGRICOS
+
+¿CUALES ERAN LAS VARIABLES CATEOGRICAS?
+
+Grado de acuerdo: Familia sufre cuando la mujer tiene un trabajo
+
+```{r}
+sjmisc::frq(proc_elsoc$sufrimiento_familia)
+```
+
+Satisfaccion con la vida
+
+```{r}
+
+sjmisc::frq(proc_elsoc$satisfaccion_vida)
+```
+
+¿CON QUE TÉCNICAS ESTADISTICAS PODEMOS ANALIZARLAS?
+
+## TABLAS DE CONTINGENCIA
+
+paso a paso
+
+```{r}
+ctable(proc_elsoc$satisfaccion_vida_rec, proc_elsoc$sufrimiento_familia_rec)
+```
+
+tabla linda
+
+```{r}
+proc_elsoc %>%
+  sjPlot::sjtab(satisfaccion_vida_rec,
+                sufrimiento_familia_rec,
+                show.row.prc = TRUE, # porcentaje fila
+                show.col.prc = TRUE, # porcentaje columna
+                
+  )
+```
+
+¿QUÉ ES?
+
+### CHI CUADRADO
+
+```{r}
+chi_results <- chisq.test(proc_elsoc$satisfaccion_vida_rec, proc_elsoc$sufrimiento_familia_rec)
+
+chi_results #no es significativo, por tanto no hay asociacion 
+```
+
+tabla bonita
+
+```{r}
+
+chi_results <- chisq.test(table(proc_elsoc$satisfaccion_vida_rec, 
+                                proc_elsoc$sufrimiento_familia_rec))
+
+stats.table <- broom::tidy(chi_results, conf_int = T)
+rempsyc::nice_table(stats.table)
+```
+
+grafico
+
+```{r}
+
+ggchisqtest(chi_results)
+```
+
+# 2. ANALISIS BIVARIADO: NUMERICOS
+
+Ingreso total del hogar (monto)
+
+```{r}
+summary(proc_elsoc$ingreso_hogar)
+```
+
+Estatus Social Subjetivo: Donde se ubicaria ud. en la sociedad chilena
+
+```{r}
+summary(proc_elsoc$estatus_social_subjetivo)
+```
+
+Remuneracion justa entrevistado
+
+```{r}
+summary(proc_elsoc$remuneracion_justa)
+```
+
+## CORRELACION
+
+caso 1
+
+```{r}
+cor(x = proc_elsoc$ingreso_hogar, 
+    y = proc_elsoc$estatus_social_subjetivo, 
+    use = "complete.obs")
+```
+
+caso 2
+
+```{r}
+
+cor(x = proc_elsoc$ingreso_hogar, 
+    y = proc_elsoc$remuneracion_justa, 
+    use = "complete.obs")
+```
+
+## GRAFICO DE PUNTOS
+
+caso 1
+
+```{r}
+sjPlot::plot_scatter(data = proc_elsoc, 
+                     x = ingreso_hogar,
+                     y = estatus_social_subjetivo)
+```
+
+caso 2
+
+```{r}
+sjPlot::plot_scatter(data = proc_elsoc, 
+                     x = ingreso_hogar,
+                     y = remuneracion_justa)
+```
+
+### Coeficinete de determinacion R2
+
+caso 1
+
+```{r}
+r <- cor(x = proc_elsoc$ingreso_hogar, 
+         y = proc_elsoc$estatus_social_subjetivo, 
+         use = "complete.obs")
+
+r^2
+
+#para estimar en % 
+r^2*100
+#0.7%
+```
+
+caso 2
+
+```{r}
+r <- cor(x = proc_elsoc$ingreso_hogar, 
+         y = proc_elsoc$remuneracion_justa, 
+         use = "complete.obs")
+
+r^2
+
+#para estimar en % 
+r^2*100
+#25%
+```

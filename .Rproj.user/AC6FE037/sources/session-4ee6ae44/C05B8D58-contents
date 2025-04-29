@@ -1,0 +1,256 @@
+---
+title: "Idea inicial"
+fontsize: 12pt
+#bibliography: "../input/mini-proyecto.bib"
+#csl: "input/bib/apa6.csl"
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 6
+    toc-expand: 6
+    toc-title: Contenidos
+    number-sections: false
+    number-depth: 6
+    theme: 
+    - sandstone
+    title-block-banner: true
+editor: visual
+lang: es
+---
+
+
+## Primera parte dela estructura de datos: columnas y objetos
+
+En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos "R es una cocina". 
+
+
+Lo primerio, entonces, es que pensemos que RStudio, nuestra interfaz ue visualizamos en estos momentos, es una cocina. Es importante que usemos la imaginación, ya que evidentemente no se ve como una cocina.
+
+Cuando cocinamos siempe devemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*. 
+
+#### Primero, debemos precalentar la cocina
+```{r}
+#| echo: true
+
+pacman::p_load(beepr, dplyr, tidyverse) 
+beep(1)
+```
+::: callout-note
+Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingrdientes. 
+:::
+
+Con la cocina precalentada, podemos avanzar al siguiente paso. 
+
+#### Ahora debemos agregar los ingredientes...
+
+::: callout-tip
+Importante: deben ser la misma cantidad de elementos dentro del parentesis
+:::
+
+```{r}
+#| echo: true
+#| label: crear objetos
+
+ingrediente_1 <- c(2,3,4,5,6,7,4,3,8,1) #10 casos
+ingrediente_2 <- c(100, 200, 50, 30, 100, 91, 87, 100, 55, 61)
+ingrediente_3 <- c(10, 25,30,35,35,20,15,10,20, 25)
+ingrediente_4 <- c("pisca", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "pisca", 
+                   "pisca", 
+                   "cucharadita", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "cucharada", 
+                   "cucharada")
+
+```
+
+Si vamos viendo, nuestros ingredientes se van *acumulando en el cuadrante de abajo* (como valores). En ese sentido y en contexto, nuestra cocina va *almacenando los ingredientes que queremos utilizr para hacer un plato*.  
+
+#### Ahora bien, ya con los ingredientess listos, es momento de hacer nuestro plato. Para ello hacemos lo siguiete: 
+```{r}
+#| echo: true
+#| label: crear base
+plato <- data.frame(ingrediente_1, 
+                    ingrediente_2,
+                    ingrediente_3, 
+                    ingrediente_4)
+beep(1)
+```
+
+Si volvemos a mirar en el cuadrante de abajo, el palto esta listo (asimismo como lo indica el sonido al finalizar) y se encuentra almcenado no como un valor, sino que como un dato, al que lalamaremos en términos más técnicos un **objeto**.
+
+Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software: 
+
+> Un **plato** que corresponde a un ***objeto*** 
+
+> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto. 
+
+## Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos 
+
+Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo. Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera: 
+```{r}
+#| echo: true
+#| label: hormigas en el plato
+
+
+plato$ID <- c("hormiga_a",
+        "hormiga_b", 
+        "hormiga_c", 
+        "hormiga_d", 
+        "hormiga_e", 
+        "hormiga_f",
+        "hormiga_g", 
+        "hormiga_h", 
+        "hormiga_i", 
+        "hormiga_j")
+```
+
+Así, las hormigas se almacenaran en el valor ID, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato. 
+
+Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como gramos y cucharadas). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato. 
+
+En ese sentido, ya no solo decimos 
+
+> *"Llegaron las hormigas al plato y se llevan cosas de este"*
+
+Sino que, podemos decir cosas más especificas al respecto: 
+
+> *"Dentro del plato, la hormiga a se llevo una psica del ingrediente 4 y la hormiga b se llevo 25 miligramos del ingrediente 3"* 
+
+
+#### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico? 
+
+tablas deccontgencia!!!
+
+¿y si solo queremos ver a la hirmiga g?
+filtramos!!
+
+#### En términos concreto y hablando ya con el lenuaje de R...
+
+
+
+:::{.columns}
+::: {.column width="45%"}
+::: callout-note
+Antes recordemos tres concpetos básicos: tablas, filas y columnas
+Una tabla esta compuesta por filas y columnas, y aquello entrega celdas o casillas
+:::
+
+- las filas son horizontales 
+
+- las columnas verticales 
+
+- y en la tabla estas se cruzan entre si, dicho cruce son las celdas
+
+- una celda es el dato de un caso especficio dentro de una variable espcifcia
+:::
+
+::: {.column width="45%"}
+
+::: callout-note
+*¿Para que nos sirve saber esto?* 
+Para entender el **funcionamiento de una base de datos** 
+RStudio para hacer los análisis estadisticos, utiliza bases de datos. Que son tablas con datos en su interiro
+:::
+
+
+- las fils son casos, e nuestro ejemplo, las hormigas
+
+- las columnas son variables, en nuestro ejemplo, los ingredientes 
+
+- y las bases de datos o data frames, son esta estrucutra que combina ambas en nuestro ejemplo, es el plato 
+
+:::
+:::
+
+Ahoa bien, lo que hicimos en la practica con el plato es que es el almacenador de algo y le asignamos los ingredientes (que en el fondo son valores). 
+En R, como es una cocina, trabajamos en funcion de ir creando platos (o objetos) 
+
+::: {.columns}
+::: {.column width="45%"}
+
+> a) Podemos agregar ingeedients a un mis plato, en su proces dpreparcion
+en tecnicismo, esto es sobreescribir un objeto
+
+:::
+::: {.column width="45%"}
+> b) podemos ir alamacendando platos distitnos en nuestra cocina 
+en tecnicismo, esto es crear un objeto 
+
+:::
+:::
+
+```{r}
+#| echo: true
+#| label: ver
+
+view(plato)
+
+```
+
+#### Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad? 
+
+Tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc. 
+
+En ese sentdio, nuesta estrcutura de datos:
+
+::: callout-note
+
+- las filas seran personas
+
+- las columnas preguntas de un cuestionario 
+
+- y la base de datos la combinacion de ambas
+
+- asi las celdasson la respuesta espcficia de una persona a una pregunta especifcia 
+
+:::
+
+si lo vemos dentro de nuestra analagia, la encuesta es nuestro plato y las pregutnas son los ingredientes que coponenen ese plato 
+
+Al entendr que las ormigas sacan un pocentaje de lso ingredientes, le entrgamos un valor 
+
+En ese sentido, cierto porcentje del ingrediente le pertence a una hormiga
+Aquí cierto portaje del dato le pertenece a una persona, ya que aquelo es su repsuta a la pregunta del cuestionario. 
+
+Entocnes: lo que hacemos es utilizar nuestra cocina estadsitica para utilizar esas respuestas que tienen un valor para nosotres, las respeustas de ls prsoans nos indican tendencias, percepciones, y condiciones objetivas en las que viven. Esos datos son valiosos para nuestra labor, ya que podemo analizarlos para tener una nocion de como se distirbuyen dichas caracterisitcas. 
+
+Del mismo modo, que podriamos ver como se distribuye cierto ingrediente en las homigas, o que ingrediente prefierne más la homrigas, al observar sus frecuencias e iddntificar el más popular. 
+
+Aquello, nos sivepara relizar hipotesis...
+
+En el caso de las hormigas podriamos hipotetizar que el ingrediente a es más dañino y ello podria ser una esxplicacin a su baja frecuencia
+o, ootra hiptesis, que es más dificl de cosneguir. 
+
+Dentro de nuestra discplina...
+
+En ciencias sociales, algo similir s ve cuando evaluamos los ingresos, con analisis decriptivos, ya podemos ver brecas, desigaulades, aproxmaciones a la distribucion, segun ls estadisticos que calculeos. Asi, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto maxmo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad. y, desde ahi trazar hipotesis que expliquen aquello y que nos lelvena indigar más. 
+
+
+## Procesmaiento de los datos 
+
+Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables. 
+
+Pnesemos en un plato concreto 
+
+### Creemos más platos 
+
+
+
+## limpieza de datos propiamnete tal 
+```{r}
+#| echo: false
+#| label: observamos primera
+
+sjmisc::frq(plato$ingrediente_4) #sin embargo, esta desordenado
+```
+
+Se ve que est desordenado, podemos arreglarlo!!
+
+limpiando los datos... pero ¿cómo lo hacemos? con el paquete dplyr 
+
+

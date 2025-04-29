@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Idea inicial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="idea-inicial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="idea-inicial_files/libs/quarto-html/quarto.js"></script>
+<script src="idea-inicial_files/libs/quarto-html/popper.min.js"></script>
+<script src="idea-inicial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="idea-inicial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="idea-inicial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="idea-inicial_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="idea-inicial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="idea-inicial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="idea-inicial_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Idea inicial</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="6">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#primera-parte-dela-estructura-de-datos-columnas-y-objetos" id="toc-primera-parte-dela-estructura-de-datos-columnas-y-objetos" class="nav-link active" data-scroll-target="#primera-parte-dela-estructura-de-datos-columnas-y-objetos">Primera parte dela estructura de datos: columnas y objetos</a>
+  <ul>
+  <li><a href="#primero-debemos-precalentar-la-cocina" id="toc-primero-debemos-precalentar-la-cocina" class="nav-link" data-scroll-target="#primero-debemos-precalentar-la-cocina">Primero, debemos precalentar la cocina</a></li>
+  <li><a href="#ahora-debemos-agregar-los-ingredientes" id="toc-ahora-debemos-agregar-los-ingredientes" class="nav-link" data-scroll-target="#ahora-debemos-agregar-los-ingredientes">Ahora debemos agregar los ingredientes…</a></li>
+  <li><a href="#ahora-bien-ya-con-los-ingredientess-listos-es-momento-de-hacer-nuestro-plato.-para-ello-hacemos-lo-siguiete" id="toc-ahora-bien-ya-con-los-ingredientess-listos-es-momento-de-hacer-nuestro-plato.-para-ello-hacemos-lo-siguiete" class="nav-link" data-scroll-target="#ahora-bien-ya-con-los-ingredientess-listos-es-momento-de-hacer-nuestro-plato.-para-ello-hacemos-lo-siguiete">Ahora bien, ya con los ingredientess listos, es momento de hacer nuestro plato. Para ello hacemos lo siguiete:</a></li>
+  </ul></li>
+  <li><a href="#segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos" id="toc-segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos" class="nav-link" data-scroll-target="#segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos">Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos</a>
+  <ul>
+  <li><a href="#ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" id="toc-ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" class="nav-link" data-scroll-target="#ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico">Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico?</a></li>
+  <li><a href="#en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" id="toc-en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" class="nav-link" data-scroll-target="#en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r">En términos concreto y hablando ya con el lenuaje de R…</a></li>
+  <li><a href="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" id="toc-ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" class="nav-link" data-scroll-target="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad">Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?</a></li>
+  </ul></li>
+  <li><a href="#procesmaiento-de-los-datos" id="toc-procesmaiento-de-los-datos" class="nav-link" data-scroll-target="#procesmaiento-de-los-datos">Procesmaiento de los datos</a>
+  <ul>
+  <li><a href="#creemos-más-platos" id="toc-creemos-más-platos" class="nav-link" data-scroll-target="#creemos-más-platos">Creemos más platos</a></li>
+  </ul></li>
+  <li><a href="#limpieza-de-datos-propiamnete-tal" id="toc-limpieza-de-datos-propiamnete-tal" class="nav-link" data-scroll-target="#limpieza-de-datos-propiamnete-tal">limpieza de datos propiamnete tal</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="primera-parte-dela-estructura-de-datos-columnas-y-objetos" class="level2">
+<h2 class="anchored" data-anchor-id="primera-parte-dela-estructura-de-datos-columnas-y-objetos">Primera parte dela estructura de datos: columnas y objetos</h2>
+<p>En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos “R es una cocina”.</p>
+<p>Lo primerio, entonces, es que pensemos que RStudio, nuestra interfaz ue visualizamos en estos momentos, es una cocina. Es importante que usemos la imaginación, ya que evidentemente no se ve como una cocina.</p>
+<p>Cuando cocinamos siempe devemos realizar un paso previo antes de todo: <em>preparar la cocina o el espacio de trabajo</em>.</p>
+<section id="primero-debemos-precalentar-la-cocina" class="level4">
+<h4 class="anchored" data-anchor-id="primero-debemos-precalentar-la-cocina">Primero, debemos precalentar la cocina</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(beepr, dplyr, tidyverse) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>(<span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingrdientes.</p>
+</div>
+</div>
+<p>Con la cocina precalentada, podemos avanzar al siguiente paso.</p>
+</section>
+<section id="ahora-debemos-agregar-los-ingredientes" class="level4">
+<h4 class="anchored" data-anchor-id="ahora-debemos-agregar-los-ingredientes">Ahora debemos agregar los ingredientes…</h4>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Importante: deben ser la misma cantidad de elementos dentro del parentesis</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ingrediente_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">1</span>) <span class="co">#10 casos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ingrediente_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">91</span>, <span class="dv">87</span>, <span class="dv">100</span>, <span class="dv">55</span>, <span class="dv">61</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ingrediente_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">35</span>,<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">20</span>, <span class="dv">25</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ingrediente_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pisca"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharadita"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharada"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"pisca"</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"pisca"</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharadita"</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharadita"</span>, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharada"</span>, </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharada"</span>, </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cucharada"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si vamos viendo, nuestros ingredientes se van <em>acumulando en el cuadrante de abajo</em> (como valores). En ese sentido y en contexto, nuestra cocina va <em>almacenando los ingredientes que queremos utilizr para hacer un plato</em>.</p>
+</section>
+<section id="ahora-bien-ya-con-los-ingredientess-listos-es-momento-de-hacer-nuestro-plato.-para-ello-hacemos-lo-siguiete" class="level4">
+<h4 class="anchored" data-anchor-id="ahora-bien-ya-con-los-ingredientess-listos-es-momento-de-hacer-nuestro-plato.-para-ello-hacemos-lo-siguiete">Ahora bien, ya con los ingredientess listos, es momento de hacer nuestro plato. Para ello hacemos lo siguiete:</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plato <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ingrediente_1, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                    ingrediente_2,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                    ingrediente_3, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                    ingrediente_4)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beep</span>(<span class="dv">1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si volvemos a mirar en el cuadrante de abajo, el palto esta listo (asimismo como lo indica el sonido al finalizar) y se encuentra almcenado no como un valor, sino que como un dato, al que lalamaremos en términos más técnicos un <strong>objeto</strong>.</p>
+<p>Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software:</p>
+<blockquote class="blockquote">
+<p>Un <strong>plato</strong> que corresponde a un <strong><em>objeto</em></strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Cuatro <strong>ingredientes</strong> que componen el plato, que son <strong><em>valores</em></strong> que integran el objeto.</p>
+</blockquote>
+</section>
+</section>
+<section id="segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos">Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos</h2>
+<p>Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las <strong>hormigas</strong> a buscarlo. Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plato<span class="sc">$</span>ID <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hormiga_a"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_b"</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_c"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_d"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_e"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_f"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_g"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_h"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_i"</span>, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hormiga_j"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Así, las hormigas se almacenaran en el valor ID, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato.</p>
+<p>Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como gramos y cucharadas). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato.</p>
+<p>En ese sentido, ya no solo decimos</p>
+<blockquote class="blockquote">
+<p><em>“Llegaron las hormigas al plato y se llevan cosas de este”</em></p>
+</blockquote>
+<p>Sino que, podemos decir cosas más especificas al respecto:</p>
+<blockquote class="blockquote">
+<p><em>“Dentro del plato, la hormiga a se llevo una psica del ingrediente 4 y la hormiga b se llevo 25 miligramos del ingrediente 3”</em></p>
+</blockquote>
+<section id="ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" class="level4">
+<h4 class="anchored" data-anchor-id="ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico">Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico?</h4>
+<p>tablas deccontgencia!!!</p>
+<p>¿y si solo queremos ver a la hirmiga g? filtramos!!</p>
+</section>
+<section id="en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" class="level4">
+<h4 class="anchored" data-anchor-id="en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r">En términos concreto y hablando ya con el lenuaje de R…</h4>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Antes recordemos tres concpetos básicos: tablas, filas y columnas Una tabla esta compuesta por filas y columnas, y aquello entrega celdas o casillas</p>
+</div>
+</div>
+<ul>
+<li><p>las filas son horizontales</p></li>
+<li><p>las columnas verticales</p></li>
+<li><p>y en la tabla estas se cruzan entre si, dicho cruce son las celdas</p></li>
+<li><p>una celda es el dato de un caso especficio dentro de una variable espcifcia</p></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>¿Para que nos sirve saber esto?</em> Para entender el <strong>funcionamiento de una base de datos</strong> RStudio para hacer los análisis estadisticos, utiliza bases de datos. Que son tablas con datos en su interiro</p>
+</div>
+</div>
+<ul>
+<li><p>las fils son casos, e nuestro ejemplo, las hormigas</p></li>
+<li><p>las columnas son variables, en nuestro ejemplo, los ingredientes</p></li>
+<li><p>y las bases de datos o data frames, son esta estrucutra que combina ambas en nuestro ejemplo, es el plato</p></li>
+</ul>
+</div>
+</div>
+<p>Ahoa bien, lo que hicimos en la practica con el plato es que es el almacenador de algo y le asignamos los ingredientes (que en el fondo son valores). En R, como es una cocina, trabajamos en funcion de ir creando platos (o objetos)</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<blockquote class="blockquote">
+<ol type="a">
+<li>Podemos agregar ingeedients a un mis plato, en su proces dpreparcion en tecnicismo, esto es sobreescribir un objeto</li>
+</ol>
+</blockquote>
+</div><div class="column" style="width:45%;">
+<blockquote class="blockquote">
+<ol start="2" type="a">
+<li>podemos ir alamacendando platos distitnos en nuestra cocina en tecnicismo, esto es crear un objeto</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(plato)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" class="level4">
+<h4 class="anchored" data-anchor-id="ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad">Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?</h4>
+<p>Tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc.</p>
+<p>En ese sentdio, nuesta estrcutura de datos:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>las filas seran personas</p></li>
+<li><p>las columnas preguntas de un cuestionario</p></li>
+<li><p>y la base de datos la combinacion de ambas</p></li>
+<li><p>asi las celdasson la respuesta espcficia de una persona a una pregunta especifcia</p></li>
+</ul>
+</div>
+</div>
+<p>si lo vemos dentro de nuestra analagia, la encuesta es nuestro plato y las pregutnas son los ingredientes que coponenen ese plato</p>
+<p>Al entendr que las ormigas sacan un pocentaje de lso ingredientes, le entrgamos un valor</p>
+<p>En ese sentido, cierto porcentje del ingrediente le pertence a una hormiga Aquí cierto portaje del dato le pertenece a una persona, ya que aquelo es su repsuta a la pregunta del cuestionario.</p>
+<p>Entocnes: lo que hacemos es utilizar nuestra cocina estadsitica para utilizar esas respuestas que tienen un valor para nosotres, las respeustas de ls prsoans nos indican tendencias, percepciones, y condiciones objetivas en las que viven. Esos datos son valiosos para nuestra labor, ya que podemo analizarlos para tener una nocion de como se distirbuyen dichas caracterisitcas.</p>
+<p>Del mismo modo, que podriamos ver como se distribuye cierto ingrediente en las homigas, o que ingrediente prefierne más la homrigas, al observar sus frecuencias e iddntificar el más popular.</p>
+<p>Aquello, nos sivepara relizar hipotesis…</p>
+<p>En el caso de las hormigas podriamos hipotetizar que el ingrediente a es más dañino y ello podria ser una esxplicacin a su baja frecuencia o, ootra hiptesis, que es más dificl de cosneguir.</p>
+<p>Dentro de nuestra discplina…</p>
+<p>En ciencias sociales, algo similir s ve cuando evaluamos los ingresos, con analisis decriptivos, ya podemos ver brecas, desigaulades, aproxmaciones a la distribucion, segun ls estadisticos que calculeos. Asi, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto maxmo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad. y, desde ahi trazar hipotesis que expliquen aquello y que nos lelvena indigar más.</p>
+</section>
+</section>
+<section id="procesmaiento-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="procesmaiento-de-los-datos">Procesmaiento de los datos</h2>
+<p>Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables.</p>
+<p>Pnesemos en un plato concreto</p>
+<section id="creemos-más-platos" class="level3">
+<h3 class="anchored" data-anchor-id="creemos-más-platos">Creemos más platos</h3>
+</section>
+</section>
+<section id="limpieza-de-datos-propiamnete-tal" class="level2">
+<h2 class="anchored" data-anchor-id="limpieza-de-datos-propiamnete-tal">limpieza de datos propiamnete tal</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;character&gt; 
+# total N=10 valid N=10 mean=1.90 sd=0.88
+
+Value       | N | Raw % | Valid % | Cum. %
+------------------------------------------
+cucharada   | 4 |    40 |      40 |     40
+cucharadita | 3 |    30 |      30 |     70
+pisca       | 3 |    30 |      30 |    100
+&lt;NA&gt;        | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<p>Se ve que est desordenado, podemos arreglarlo!!</p>
+<p>limpiando los datos… pero ¿cómo lo hacemos? con el paquete dplyr</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

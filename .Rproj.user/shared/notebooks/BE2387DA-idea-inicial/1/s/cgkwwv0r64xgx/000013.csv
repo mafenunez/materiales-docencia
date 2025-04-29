@@ -1,0 +1,4 @@
+"0","#| echo: true"
+"0",""
+"0","pacman::p_load(beepr, dplyr, tidyverse) "
+"0","beep(1)"
