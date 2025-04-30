@@ -20,14 +20,14 @@ lang: es
 ---
 
 
-## Primera parte dela estructura de datos: columnas y objetos
+## Primera parte de la estructura de datos: *columnas y objetos*
 
-En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos "R es una cocina". 
+En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos ***"R es una cocina"***. 
 
 
 Lo primerio, entonces, es que pensemos que RStudio, nuestra interfaz ue visualizamos en estos momentos, es una cocina. Es importante que usemos la imaginación, ya que evidentemente no se ve como una cocina.
 
-Cuando cocinamos siempe devemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*. 
+Cuando cocinamos siempre devemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*. 
 
 #### Primero, debemos precalentar la cocina
 ```{r}
@@ -37,7 +37,7 @@ pacman::p_load(beepr, dplyr, tidyverse)
 beep(1)
 ```
 ::: callout-note
-Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingrdientes. 
+Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingredientes. 
 :::
 
 Con la cocina precalentada, podemos avanzar al siguiente paso. 
@@ -81,7 +81,7 @@ plato <- data.frame(ingrediente_1,
 beep(1)
 ```
 
-Si volvemos a mirar en el cuadrante de abajo, el palto esta listo (asimismo como lo indica el sonido al finalizar) y se encuentra almcenado no como un valor, sino que como un dato, al que lalamaremos en términos más técnicos un **objeto**.
+Si volvemos a mirar en el cuadrante de abajo, el plato esta listo (tal como lo indica el sonido de la cocina al finalizar) y se encuentra almacenado no como un valor, sino que como un dato. Al que llamaremos, en términos más técnicos, un **objeto**.
 
 Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software: 
 
@@ -89,9 +89,11 @@ Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecni
 
 > Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**. 
 
-## Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos 
+## Segunda parte de la estrucutra de datos: *filas y funcionamiento de una base de datos* 
 
-Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo. Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera: 
+Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo. 
+
+Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera: 
 ```{r}
 #| echo: true
 #| label: hormigas en el plato
@@ -109,9 +111,9 @@ plato$ID <- c("hormiga_a",
         "hormiga_j")
 ```
 
-Así, las hormigas se almacenaran en el valor ID, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato. 
+Así, las hormigas se almacenaran en el valor `ID`, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato. 
 
-Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como gramos y cucharadas). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato. 
+Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como `gramos` y `cucharadas`). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato. 
 
 En ese sentido, ya no solo decimos 
 
@@ -119,14 +121,14 @@ En ese sentido, ya no solo decimos
 
 Sino que, podemos decir cosas más especificas al respecto: 
 
-> *"Dentro del plato, la hormiga a se llevo una psica del ingrediente 4 y la hormiga b se llevo 25 miligramos del ingrediente 3"* 
+> *"Dentro del plato, la `hormiga_a` se llevo una pisca del `ingrediente_4` y la `hormiga_b` se llevo 25 miligramos del `ingrediente_3`"* 
 
 
 #### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico? 
 
 Con estadística descriptiva!
 
-Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, en este caso hormigas con ingrediente 4. Quedaría algo así:
+Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, en este caso hormigas con el `ingrediente_4`. Quedaría algo así:
 
 ```{r}
 #| echo: true
@@ -135,7 +137,7 @@ Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, 
 summarytools::ctable(plato$ID, plato$ingrediente_4)
 
 ```
-Aqui podemos ver que la hormiga a se llevo una psica del ingrediente 4 de nuestro plato y, al contrario, la horrmiga c se llevo una cucharada. 
+Aqui podemos ver que la `hormiga_a` se llevo una psica del `ingrediente_4` de nuestro plato y, al contrario, la `horrmiga_c` se llevo una cucharada. 
 
 #### Pero... ¿y si solo queremos ver a la hormiga g?
 filtramos!!
@@ -151,7 +153,7 @@ str(hg)
 
 Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el alamcenamiento de los ingredientes, la creación de platos y en el análisis de los proceso que pueden estar ocurriendo dentro de la misma. 
 
-A l información que vimos en el apartado anterioor, ahora se agrega un tecnicimo más: 
+A l información que vimos en el apartado anterior, ahora se agrega un tecnicimo más: 
 
 > Las hormigas poseen un pocentaje del ingrediente, en ese sentido toman un valor de cada ingrediente que compone el plato y se encuentran en las **filas**
 
