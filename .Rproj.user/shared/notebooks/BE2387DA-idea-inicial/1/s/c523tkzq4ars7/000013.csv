@@ -1,0 +1,5 @@
+"0","hg <- filter(plato$ID == ""hormiga_g"")
+"
+"2","Error in UseMethod(""filter"") : 
+  no applicable method for 'filter' applied to an object of class ""logical""
+"

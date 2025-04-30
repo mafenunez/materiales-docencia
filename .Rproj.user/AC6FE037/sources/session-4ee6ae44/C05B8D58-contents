@@ -87,7 +87,7 @@ Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecni
 
 > Un **plato** que corresponde a un ***objeto*** 
 
-> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto. 
+> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**. 
 
 ## Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos 
 
@@ -124,64 +124,105 @@ Sino que, podemos decir cosas más especificas al respecto:
 
 #### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico? 
 
-tablas deccontgencia!!!
+Con estadística descriptiva!
 
-¿y si solo queremos ver a la hirmiga g?
+Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, en este caso hormigas con ingrediente 4. Quedaría algo así:
+
+```{r}
+#| echo: true
+#| label: cuanto de la ingrediente 1 se llevo cada hormiga
+
+summarytools::ctable(plato$ID, plato$ingrediente_4)
+
+```
+Aqui podemos ver que la hormiga a se llevo una psica del ingrediente 4 de nuestro plato y, al contrario, la horrmiga c se llevo una cucharada. 
+
+#### Pero... ¿y si solo queremos ver a la hormiga g?
 filtramos!!
 
+```{r}
+#| echo: true
+#| label: hormiga g
+
+hg <- plato %>% filter(ID == "hormiga_g")
+
+str(hg)
+```
+
+Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el alamcenamiento de los ingredientes, la creación de platos y en el análisis de los proceso que pueden estar ocurriendo dentro de la misma. 
+
+A l información que vimos en el apartado anterioor, ahora se agrega un tecnicimo más: 
+
+> Las hormigas poseen un pocentaje del ingrediente, en ese sentido toman un valor de cada ingrediente que compone el plato y se encuentran en las **filas**
+
+> Nuestra cocina nos permite **calcular** como se dsitribuyen estos valores de cada ingrediente entre las hormigas
+
+Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempe retomando nuestro ejemplo de que **R es una cocina**. 
+
 #### En términos concreto y hablando ya con el lenuaje de R...
-
-
 
 :::{.columns}
 ::: {.column width="45%"}
 ::: callout-note
-Antes recordemos tres concpetos básicos: tablas, filas y columnas
-Una tabla esta compuesta por filas y columnas, y aquello entrega celdas o casillas
+Antes recordemos tres conceptos básicos: **tablas**, **filas** y **columnas**.
+
+Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas o casillas***.
+
+- Las filas son **horizontales** 
+
+- Las columnas **verticales** 
+
+- En la tabla estas se ***cruzan entre si***, dicho cruce son las **celdas**
 :::
 
-- las filas son horizontales 
 
-- las columnas verticales 
 
-- y en la tabla estas se cruzan entre si, dicho cruce son las celdas
+> *Así, una celda es el dato de un caso especifico dentro de una variable espcifica*
 
-- una celda es el dato de un caso especficio dentro de una variable espcifcia
 :::
 
 ::: {.column width="45%"}
 
 ::: callout-note
 *¿Para que nos sirve saber esto?* 
-Para entender el **funcionamiento de una base de datos** 
-RStudio para hacer los análisis estadisticos, utiliza bases de datos. Que son tablas con datos en su interiro
+
+Para entender el **funcionamiento de una base de datos**. 
+
+RStudio para hacer los análisis estadisticos, utiliza bases de datos, las cuales podemos entender, con la terminología que manejamos hasta ahora, como "tablas" con datos en su interiror.
+
+
+- Las filas son **casos**, en nuestro ejemplo, las hormigas.
+
+- Las columnas son **variables**, en nuestro ejemplo, los ingredientes. 
+
+- Las **bases de datos** o **data frames**, son esta estructura que combina ambas, en nuestro ejemplo, es el plato.
+
 :::
 
 
-- las fils son casos, e nuestro ejemplo, las hormigas
-
-- las columnas son variables, en nuestro ejemplo, los ingredientes 
-
-- y las bases de datos o data frames, son esta estrucutra que combina ambas en nuestro ejemplo, es el plato 
-
 :::
 :::
 
-Ahoa bien, lo que hicimos en la practica con el plato es que es el almacenador de algo y le asignamos los ingredientes (que en el fondo son valores). 
-En R, como es una cocina, trabajamos en funcion de ir creando platos (o objetos) 
+Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de "algo" y le *asignamos* los ingredientes (que, en el fondo, son valores). 
+
+> *En R, como es una cocina, trabajamos en funcion de ir creando platos (u, dicho de forma técnica, **objetos**)* 
 
 ::: {.columns}
 ::: {.column width="45%"}
 
-> a) Podemos agregar ingeedients a un mis plato, en su proces dpreparcion
-en tecnicismo, esto es sobreescribir un objeto
+
+a) Podemos agregar ingredientes a un mismo plato, en su proceso de preparacion,
+en un lenguaje más técnico, esto es *sobreescribir un objeto*
+
 
 :::
 ::: {.column width="45%"}
-> b) podemos ir alamacendando platos distitnos en nuestra cocina 
-en tecnicismo, esto es crear un objeto 
 
+b) Podemos ir almacendando platos distintos en nuestra cocina 
+en un lenguaje más técnico, esto es *crear un objeto* 
 :::
+
+
 :::
 
 ```{r}
@@ -189,48 +230,69 @@ en tecnicismo, esto es crear un objeto
 #| label: ver
 
 view(plato)
-
 ```
 
 #### Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad? 
 
-Tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc. 
+En nuestro estudio, tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc. 
 
-En ese sentdio, nuesta estrcutura de datos:
+En ese sentido, nuesta estrcutura de datos se vera de la siguiente manera:
 
-::: callout-note
+- Las filas seran **personas**
 
-- las filas seran personas
+- Las columnas **preguntas de un cuestionario** 
 
-- las columnas preguntas de un cuestionario 
+- La base de datos la *combinacion de ambas*
 
-- y la base de datos la combinacion de ambas
+> *Así, las celdas son la respuesta especifica de una persona a una pregunta especifica *
 
-- asi las celdasson la respuesta espcficia de una persona a una pregunta especifcia 
 
+Si lo vemos dentro de nuestra analogia:
+
+- *La **encuesta** es nuestro **plato*** 
+
+- *Las **preguntas** son los **ingredientes** que componene ese plato* 
+
+Al entender que las hormigas sacan un pocentaje de los ingredientes,le entregamos un ***valor especifico a cada una de ese ingrediente***. 
+
+##### En ese sentido: 
+
+> Cierto porcentaje del ingrediente le pertenece a una hormiga
+
+##### En los datos de una encuesta:
+
+> Cierto porcentaje del dato le pertenece a una persona, ya que aquello es su respuesta a la pregunta del cuestionario 
+
+### Entonces, dentro de la investigación sociologica y estadistica lo que hacemos es:
+
+Utilizar nuestra ***cocina estadistica*** para observar esas respuestas que tienen un valor para nosotres.
+
+
+Las respuestas de las personas nos indican **tendencias, percepciones, y condiciones objetivas en las que viven**. Esos datos son valiosos para nuestra labor, ya que podemos analizarlos para tener una nocion de *cómo se distirbuyen dichas caracterisitcas en la sociedad*. 
+
+Del mismo modo, que podriamos ver cómo se distribuye cierto ingrediente en las homigas, o que ingrediente prefieren más la homrigas solo observando sus frecuencias e idnetificando el ingrediente más popular. 
+
+*¿Cuál es la utilidad de eso en lo concreto?*
+
+Nos permite para relizar **hipótesis** y **preguntas de investigación**.
+
+::: {.columns}
+
+::: {.column width="45%"}
+
+> En el **caso de las hormigas**, podriamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino y esa razón podria ser una posible explicación a su baja frecuencia. U otra hipótesis, podría ser que ese ingediente es más dificl de conseguir del plato. 
 :::
 
-si lo vemos dentro de nuestra analagia, la encuesta es nuestro plato y las pregutnas son los ingredientes que coponenen ese plato 
+::: {.column width="45%"}
 
-Al entendr que las ormigas sacan un pocentaje de lso ingredientes, le entrgamos un valor 
+> En **Ciencias Sociales**, algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con analisis decriptivos ya podemos ver brechas, desigualdades y  aproximaciones a la distribución, segun los estadisticos que calculemos.
 
-En ese sentido, cierto porcentje del ingrediente le pertence a una hormiga
-Aquí cierto portaje del dato le pertenece a una persona, ya que aquelo es su repsuta a la pregunta del cuestionario. 
+> Así, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto máximo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad evidente. Desde ahi, podemos intuir cuestionamieno y trazar hipotesis que expliquen aquello, las cuales nos lleven a indigar más del fenómeno. 
 
-Entocnes: lo que hacemos es utilizar nuestra cocina estadsitica para utilizar esas respuestas que tienen un valor para nosotres, las respeustas de ls prsoans nos indican tendencias, percepciones, y condiciones objetivas en las que viven. Esos datos son valiosos para nuestra labor, ya que podemo analizarlos para tener una nocion de como se distirbuyen dichas caracterisitcas. 
+:::
+:::
 
-Del mismo modo, que podriamos ver como se distribuye cierto ingrediente en las homigas, o que ingrediente prefierne más la homrigas, al observar sus frecuencias e iddntificar el más popular. 
-
-Aquello, nos sivepara relizar hipotesis...
-
-En el caso de las hormigas podriamos hipotetizar que el ingrediente a es más dañino y ello podria ser una esxplicacin a su baja frecuencia
-o, ootra hiptesis, que es más dificl de cosneguir. 
-
-Dentro de nuestra discplina...
-
-En ciencias sociales, algo similir s ve cuando evaluamos los ingresos, con analisis decriptivos, ya podemos ver brecas, desigaulades, aproxmaciones a la distribucion, segun ls estadisticos que calculeos. Asi, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto maxmo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad. y, desde ahi trazar hipotesis que expliquen aquello y que nos lelvena indigar más. 
-
-
+----
 ## Procesmaiento de los datos 
 
 Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables. 

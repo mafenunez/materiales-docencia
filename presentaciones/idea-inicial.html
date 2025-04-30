@@ -104,14 +104,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos" id="toc-segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos" class="nav-link" data-scroll-target="#segunda-parte-de-la-estrucutra-de-datos-filas-y-funcionamiento-de-una-base-de-datos">Segunda parte de la estrucutra de datos: filas y funcionamiento de una base de datos</a>
   <ul>
   <li><a href="#ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" id="toc-ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" class="nav-link" data-scroll-target="#ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico">Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico?</a></li>
+  <li><a href="#pero-y-si-solo-queremos-ver-a-la-hormiga-g" id="toc-pero-y-si-solo-queremos-ver-a-la-hormiga-g" class="nav-link" data-scroll-target="#pero-y-si-solo-queremos-ver-a-la-hormiga-g">Pero… ¿y si solo queremos ver a la hormiga g?</a></li>
   <li><a href="#en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" id="toc-en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" class="nav-link" data-scroll-target="#en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r">En términos concreto y hablando ya con el lenuaje de R…</a></li>
-  <li><a href="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" id="toc-ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" class="nav-link" data-scroll-target="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad">Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?</a></li>
-  </ul></li>
-  <li><a href="#procesmaiento-de-los-datos" id="toc-procesmaiento-de-los-datos" class="nav-link" data-scroll-target="#procesmaiento-de-los-datos">Procesmaiento de los datos</a>
+  <li><a href="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" id="toc-ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" class="nav-link" data-scroll-target="#ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad">Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?</a>
   <ul>
-  <li><a href="#creemos-más-platos" id="toc-creemos-más-platos" class="nav-link" data-scroll-target="#creemos-más-platos">Creemos más platos</a></li>
+  <li><a href="#en-ese-sentido" id="toc-en-ese-sentido" class="nav-link" data-scroll-target="#en-ese-sentido">En ese sentido:</a></li>
+  <li><a href="#en-los-datos-de-una-encuesta" id="toc-en-los-datos-de-una-encuesta" class="nav-link" data-scroll-target="#en-los-datos-de-una-encuesta">En los datos de una encuesta:</a></li>
   </ul></li>
-  <li><a href="#limpieza-de-datos-propiamnete-tal" id="toc-limpieza-de-datos-propiamnete-tal" class="nav-link" data-scroll-target="#limpieza-de-datos-propiamnete-tal">limpieza de datos propiamnete tal</a></li>
+  <li><a href="#entonces-dentro-de-la-investigación-sociologica-y-estadistica-lo-que-hacemos-es" id="toc-entonces-dentro-de-la-investigación-sociologica-y-estadistica-lo-que-hacemos-es" class="nav-link" data-scroll-target="#entonces-dentro-de-la-investigación-sociologica-y-estadistica-lo-que-hacemos-es">Entonces, dentro de la investigación sociologica y estadistica lo que hacemos es:</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -194,7 +195,7 @@ Tip
 <p>Un <strong>plato</strong> que corresponde a un <strong><em>objeto</em></strong></p>
 </blockquote>
 <blockquote class="blockquote">
-<p>Cuatro <strong>ingredientes</strong> que componen el plato, que son <strong><em>valores</em></strong> que integran el objeto.</p>
+<p>Cuatro <strong>ingredientes</strong> que componen el plato, que son <strong><em>valores</em></strong> que integran el objeto, dispuestos en <strong>columnas</strong>.</p>
 </blockquote>
 </section>
 </section>
@@ -225,8 +226,59 @@ Tip
 </blockquote>
 <section id="ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico" class="level4">
 <h4 class="anchored" data-anchor-id="ahora-bien-cómo-podemos-ver-cuánto-saco-cada-hormiga-de-un-ingediente-en-especifico">Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico?</h4>
-<p>tablas deccontgencia!!!</p>
-<p>¿y si solo queremos ver a la hirmiga g? filtramos!!</p>
+<p>Con estadística descriptiva!</p>
+<p>Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, en este caso hormigas con ingrediente 4. Quedaría algo así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>summarytools<span class="sc">::</span><span class="fu">ctable</span>(plato<span class="sc">$</span>ID, plato<span class="sc">$</span>ingrediente_4)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cross-Tabulation, Row Proportions  
+ID * ingrediente_4  
+Data Frame: plato  
+
+----------- --------------- ------------ ------------- ------------ -------------
+              ingrediente_4    cucharada   cucharadita        pisca         Total
+         ID                                                                      
+  hormiga_a                   0 (  0.0%)    0 (  0.0%)   1 (100.0%)    1 (100.0%)
+  hormiga_b                   0 (  0.0%)    1 (100.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_c                   1 (100.0%)    0 (  0.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_d                   0 (  0.0%)    0 (  0.0%)   1 (100.0%)    1 (100.0%)
+  hormiga_e                   0 (  0.0%)    0 (  0.0%)   1 (100.0%)    1 (100.0%)
+  hormiga_f                   0 (  0.0%)    1 (100.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_g                   0 (  0.0%)    1 (100.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_h                   1 (100.0%)    0 (  0.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_i                   1 (100.0%)    0 (  0.0%)   0 (  0.0%)    1 (100.0%)
+  hormiga_j                   1 (100.0%)    0 (  0.0%)   0 (  0.0%)    1 (100.0%)
+      Total                   4 ( 40.0%)    3 ( 30.0%)   3 ( 30.0%)   10 (100.0%)
+----------- --------------- ------------ ------------- ------------ -------------</code></pre>
+</div>
+</div>
+<p>Aqui podemos ver que la hormiga a se llevo una psica del ingrediente 4 de nuestro plato y, al contrario, la horrmiga c se llevo una cucharada.</p>
+</section>
+<section id="pero-y-si-solo-queremos-ver-a-la-hormiga-g" class="level4">
+<h4 class="anchored" data-anchor-id="pero-y-si-solo-queremos-ver-a-la-hormiga-g">Pero… ¿y si solo queremos ver a la hormiga g?</h4>
+<p>filtramos!!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hg <span class="ot">&lt;-</span> plato <span class="sc">%&gt;%</span> <span class="fu">filter</span>(ID <span class="sc">==</span> <span class="st">"hormiga_g"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hg)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1 obs. of  5 variables:
+ $ ingrediente_1: num 4
+ $ ingrediente_2: num 87
+ $ ingrediente_3: num 15
+ $ ingrediente_4: chr "cucharadita"
+ $ ID           : chr "hormiga_g"</code></pre>
+</div>
+</div>
+<p>Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el alamcenamiento de los ingredientes, la creación de platos y en el análisis de los proceso que pueden estar ocurriendo dentro de la misma.</p>
+<p>A l información que vimos en el apartado anterioor, ahora se agrega un tecnicimo más:</p>
+<blockquote class="blockquote">
+<p>Las hormigas poseen un pocentaje del ingrediente, en ese sentido toman un valor de cada ingrediente que compone el plato y se encuentran en las <strong>filas</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Nuestra cocina nos permite <strong>calcular</strong> como se dsitribuyen estos valores de cada ingrediente entre las hormigas</p>
+</blockquote>
+<p>Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempe retomando nuestro ejemplo de que <strong>R es una cocina</strong>.</p>
 </section>
 <section id="en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r" class="level4">
 <h4 class="anchored" data-anchor-id="en-términos-concreto-y-hablando-ya-con-el-lenuaje-de-r">En términos concreto y hablando ya con el lenuaje de R…</h4>
@@ -242,15 +294,18 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Antes recordemos tres concpetos básicos: tablas, filas y columnas Una tabla esta compuesta por filas y columnas, y aquello entrega celdas o casillas</p>
-</div>
-</div>
+<p>Antes recordemos tres conceptos básicos: <strong>tablas</strong>, <strong>filas</strong> y <strong>columnas</strong>.</p>
+<p>Una <em><strong>tabla</strong> esta compuesta por filas y columnas</em>, y aquello entrega <strong><em>celdas o casillas</em></strong>.</p>
 <ul>
-<li><p>las filas son horizontales</p></li>
-<li><p>las columnas verticales</p></li>
-<li><p>y en la tabla estas se cruzan entre si, dicho cruce son las celdas</p></li>
-<li><p>una celda es el dato de un caso especficio dentro de una variable espcifcia</p></li>
+<li><p>Las filas son <strong>horizontales</strong></p></li>
+<li><p>Las columnas <strong>verticales</strong></p></li>
+<li><p>En la tabla estas se <strong><em>cruzan entre si</em></strong>, dicho cruce son las <strong>celdas</strong></p></li>
 </ul>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><em>Así, una celda es el dato de un caso especifico dentro de una variable espcifica</em></p>
+</blockquote>
 </div><div class="column" style="width:45%;">
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -262,94 +317,125 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>¿Para que nos sirve saber esto?</em> Para entender el <strong>funcionamiento de una base de datos</strong> RStudio para hacer los análisis estadisticos, utiliza bases de datos. Que son tablas con datos en su interiro</p>
-</div>
-</div>
+<p><em>¿Para que nos sirve saber esto?</em></p>
+<p>Para entender el <strong>funcionamiento de una base de datos</strong>.</p>
+<p>RStudio para hacer los análisis estadisticos, utiliza bases de datos, las cuales podemos entender, con la terminología que manejamos hasta ahora, como “tablas” con datos en su interiror.</p>
 <ul>
-<li><p>las fils son casos, e nuestro ejemplo, las hormigas</p></li>
-<li><p>las columnas son variables, en nuestro ejemplo, los ingredientes</p></li>
-<li><p>y las bases de datos o data frames, son esta estrucutra que combina ambas en nuestro ejemplo, es el plato</p></li>
+<li><p>Las filas son <strong>casos</strong>, en nuestro ejemplo, las hormigas.</p></li>
+<li><p>Las columnas son <strong>variables</strong>, en nuestro ejemplo, los ingredientes.</p></li>
+<li><p>Las <strong>bases de datos</strong> o <strong>data frames</strong>, son esta estructura que combina ambas, en nuestro ejemplo, es el plato.</p></li>
 </ul>
 </div>
 </div>
-<p>Ahoa bien, lo que hicimos en la practica con el plato es que es el almacenador de algo y le asignamos los ingredientes (que en el fondo son valores). En R, como es una cocina, trabajamos en funcion de ir creando platos (o objetos)</p>
+</div>
+</div>
+<p>Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de “algo” y le <em>asignamos</em> los ingredientes (que, en el fondo, son valores).</p>
+<blockquote class="blockquote">
+<p><em>En R, como es una cocina, trabajamos en funcion de ir creando platos (u, dicho de forma técnica, <strong>objetos</strong>)</em></p>
+</blockquote>
 <div class="columns">
 <div class="column" style="width:45%;">
-<blockquote class="blockquote">
 <ol type="a">
-<li>Podemos agregar ingeedients a un mis plato, en su proces dpreparcion en tecnicismo, esto es sobreescribir un objeto</li>
+<li>Podemos agregar ingredientes a un mismo plato, en su proceso de preparacion, en un lenguaje más técnico, esto es <em>sobreescribir un objeto</em></li>
 </ol>
-</blockquote>
 </div><div class="column" style="width:45%;">
-<blockquote class="blockquote">
 <ol start="2" type="a">
-<li>podemos ir alamacendando platos distitnos en nuestra cocina en tecnicismo, esto es crear un objeto</li>
+<li>Podemos ir almacendando platos distintos en nuestra cocina en un lenguaje más técnico, esto es <em>crear un objeto</em></li>
 </ol>
-</blockquote>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(plato)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(plato)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad" class="level4">
 <h4 class="anchored" data-anchor-id="ahora-que-entendemos-la-estructura-de-datos-cómo-se-ve-esto-en-la-realidad">Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?</h4>
-<p>Tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc.</p>
-<p>En ese sentdio, nuesta estrcutura de datos:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>En nuestro estudio, tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc.</p>
+<p>En ese sentido, nuesta estrcutura de datos se vera de la siguiente manera:</p>
 <ul>
-<li><p>las filas seran personas</p></li>
-<li><p>las columnas preguntas de un cuestionario</p></li>
-<li><p>y la base de datos la combinacion de ambas</p></li>
-<li><p>asi las celdasson la respuesta espcficia de una persona a una pregunta especifcia</p></li>
+<li><p>Las filas seran <strong>personas</strong></p></li>
+<li><p>Las columnas <strong>preguntas de un cuestionario</strong></p></li>
+<li><p>La base de datos la <em>combinacion de ambas</em></p></li>
 </ul>
-</div>
-</div>
-<p>si lo vemos dentro de nuestra analagia, la encuesta es nuestro plato y las pregutnas son los ingredientes que coponenen ese plato</p>
-<p>Al entendr que las ormigas sacan un pocentaje de lso ingredientes, le entrgamos un valor</p>
-<p>En ese sentido, cierto porcentje del ingrediente le pertence a una hormiga Aquí cierto portaje del dato le pertenece a una persona, ya que aquelo es su repsuta a la pregunta del cuestionario.</p>
-<p>Entocnes: lo que hacemos es utilizar nuestra cocina estadsitica para utilizar esas respuestas que tienen un valor para nosotres, las respeustas de ls prsoans nos indican tendencias, percepciones, y condiciones objetivas en las que viven. Esos datos son valiosos para nuestra labor, ya que podemo analizarlos para tener una nocion de como se distirbuyen dichas caracterisitcas.</p>
-<p>Del mismo modo, que podriamos ver como se distribuye cierto ingrediente en las homigas, o que ingrediente prefierne más la homrigas, al observar sus frecuencias e iddntificar el más popular.</p>
-<p>Aquello, nos sivepara relizar hipotesis…</p>
-<p>En el caso de las hormigas podriamos hipotetizar que el ingrediente a es más dañino y ello podria ser una esxplicacin a su baja frecuencia o, ootra hiptesis, que es más dificl de cosneguir.</p>
-<p>Dentro de nuestra discplina…</p>
-<p>En ciencias sociales, algo similir s ve cuando evaluamos los ingresos, con analisis decriptivos, ya podemos ver brecas, desigaulades, aproxmaciones a la distribucion, segun ls estadisticos que calculeos. Asi, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto maxmo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad. y, desde ahi trazar hipotesis que expliquen aquello y que nos lelvena indigar más.</p>
+<blockquote class="blockquote">
+<p><em>Así, las celdas son la respuesta especifica de una persona a una pregunta especifica </em></p>
+</blockquote>
+<p>Si lo vemos dentro de nuestra analogia:</p>
+<ul>
+<li><p><em>La <strong>encuesta</strong> es nuestro <strong>plato</strong></em></p></li>
+<li><p><em>Las <strong>preguntas</strong> son los <strong>ingredientes</strong> que componene ese plato</em></p></li>
+</ul>
+<p>Al entender que las hormigas sacan un pocentaje de los ingredientes,le entregamos un <strong><em>valor especifico a cada una de ese ingrediente</em></strong>.</p>
+<section id="en-ese-sentido" class="level5">
+<h5 class="anchored" data-anchor-id="en-ese-sentido">En ese sentido:</h5>
+<blockquote class="blockquote">
+<p>Cierto porcentaje del ingrediente le pertenece a una hormiga</p>
+</blockquote>
+</section>
+<section id="en-los-datos-de-una-encuesta" class="level5">
+<h5 class="anchored" data-anchor-id="en-los-datos-de-una-encuesta">En los datos de una encuesta:</h5>
+<blockquote class="blockquote">
+<p>Cierto porcentaje del dato le pertenece a una persona, ya que aquello es su respuesta a la pregunta del cuestionario</p>
+</blockquote>
 </section>
 </section>
-<section id="procesmaiento-de-los-datos" class="level2">
-<h2 class="anchored" data-anchor-id="procesmaiento-de-los-datos">Procesmaiento de los datos</h2>
-<p>Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables.</p>
-<p>Pnesemos en un plato concreto</p>
-<section id="creemos-más-platos" class="level3">
-<h3 class="anchored" data-anchor-id="creemos-más-platos">Creemos más platos</h3>
-</section>
-</section>
-<section id="limpieza-de-datos-propiamnete-tal" class="level2">
-<h2 class="anchored" data-anchor-id="limpieza-de-datos-propiamnete-tal">limpieza de datos propiamnete tal</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>x &lt;character&gt; 
-# total N=10 valid N=10 mean=1.90 sd=0.88
-
-Value       | N | Raw % | Valid % | Cum. %
-------------------------------------------
-cucharada   | 4 |    40 |      40 |     40
-cucharadita | 3 |    30 |      30 |     70
-pisca       | 3 |    30 |      30 |    100
-&lt;NA&gt;        | 0 |     0 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+<section id="entonces-dentro-de-la-investigación-sociologica-y-estadistica-lo-que-hacemos-es" class="level3">
+<h3 class="anchored" data-anchor-id="entonces-dentro-de-la-investigación-sociologica-y-estadistica-lo-que-hacemos-es">Entonces, dentro de la investigación sociologica y estadistica lo que hacemos es:</h3>
+<p>Utilizar nuestra <strong><em>cocina estadistica</em></strong> para observar esas respuestas que tienen un valor para nosotres.</p>
+<p>Las respuestas de las personas nos indican <strong>tendencias, percepciones, y condiciones objetivas en las que viven</strong>. Esos datos son valiosos para nuestra labor, ya que podemos analizarlos para tener una nocion de <em>cómo se distirbuyen dichas caracterisitcas en la sociedad</em>.</p>
+<p>Del mismo modo, que podriamos ver cómo se distribuye cierto ingrediente en las homigas, o que ingrediente prefieren más la homrigas solo observando sus frecuencias e idnetificando el ingrediente más popular.</p>
+<p><em>¿Cuál es la utilidad de eso en lo concreto?</em></p>
+<p>Nos permite para relizar <strong>hipótesis</strong> y <strong>preguntas de investigación</strong>.</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<blockquote class="blockquote">
+<p>En el <strong>caso de las hormigas</strong>, podriamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino y esa razón podria ser una posible explicación a su baja frecuencia. U otra hipótesis, podría ser que ese ingediente es más dificl de conseguir del plato.</p>
+</blockquote>
+</div><div class="column" style="width:45%;">
+<blockquote class="blockquote">
+<p>En <strong>Ciencias Sociales</strong>, algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con analisis decriptivos ya podemos ver brechas, desigualdades y aproximaciones a la distribución, segun los estadisticos que calculemos.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Así, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto máximo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad evidente. Desde ahi, podemos intuir cuestionamieno y trazar hipotesis que expliquen aquello, las cuales nos lleven a indigar más del fenómeno.</p>
+</blockquote>
 </div>
 </div>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>## Procesmaiento de los datos</td>
+</tr>
+<tr class="even">
+<td>Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables.</td>
+</tr>
+<tr class="odd">
+<td>Pnesemos en un plato concreto</td>
+</tr>
+<tr class="even">
+<td>### Creemos más platos</td>
+</tr>
+<tr class="odd">
+<td>## limpieza de datos propiamnete tal</td>
+</tr>
+<tr class="even">
+<td>::: {.cell} ::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td>``` x <character> # total N=10 valid N=10 mean=1.90 sd=0.88</character></td>
+</tr>
+<tr class="even">
+<td>Value | N | Raw % | Valid % | Cum. %</td>
+</tr>
+</tbody>
+</table>
+<p>cucharada | 4 | 40 | 40 | 40 cucharadita | 3 | 30 | 30 | 70 pisca | 3 | 30 | 30 | 100 <na> | 0 | 0 | <na> | <na> ```</na></na></na></p>
+<p>::: :::</p>
 <p>Se ve que est desordenado, podemos arreglarlo!!</p>
 <p>limpiando los datos… pero ¿cómo lo hacemos? con el paquete dplyr</p>
+</section>
 </section>
 
 </main>
