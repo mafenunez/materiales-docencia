@@ -1,9 +1,9 @@
 {
     "id": "7AF23E90",
-    "path": "C:/Users/LENOVO/Documents/GitHub/materiales-docencia/presentaciones/inferencia.qmd",
+    "path": "~/GitHub/materiales-docencia/presentaciones/inferencia.qmd",
     "project_path": "presentaciones/inferencia.qmd",
     "type": "quarto_markdown",
-    "hash": "2281552626",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1745951936490.0,
@@ -18,7 +18,7 @@
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
         "cursorPosition": "33,0",
-        "scrollLine": "24",
+        "scrollLine": "0",
         "rmdVisualModeLocation": "120:181.81817626953125"
     },
     "folds": "",

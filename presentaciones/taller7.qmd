@@ -1,0 +1,92 @@
+---
+title: "taller 7"
+format: html
+editor: visual
+---
+
+```{r}
+#| echo: true
+#| eval: false
+# ----  0. cargar paquetes -----
+
+#install.packages("pacman") # instalamos pacman, 
+                          # en caso de que aparezca un error asociado 
+                        # que aluda a qu este no se encuentra instalado
+
+pacman::p_load(tidyverse, psych, sjPlot, sjmisc, dplyr) # pacman::p_load nos permite cargar e instalar 
+                                                        # los paquetes al mismo tiempo
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+
+# ---- 1. cargar datos ----
+load("input/datostaller7.RData") #importante recordar la estructura de carpetas
+                                # en la carpeta "input" alojamos nuestra base para 
+                                # así poder utilizar esta ruta en el código
+
+
+# ---- 2. exploramos los datos ----
+
+sjmisc::frq(datos$refinadas)
+sjmisc::frq(datos$protegidas)
+sjmisc::frq(datos$privilegios)
+sjmisc::frq(datos$trabajo)
+sjmisc::frq(datos$discriminacion)
+
+summary(datos$ingreso_hogar)
+summary(datos$remuneracion_justa)
+
+# ---- 3. crear indice ----
+
+
+indice <- select(datos, 
+                 refinadas, 
+                 protegidas,
+                 privilegios,
+                 discriminacion, 
+                 trabajo)
+
+## ---- correlacion ----
+
+sjPlot::tab_corr(indice, 
+                 na.deletion = "pairwise",
+                 triangle = "lower",
+) #  las correlacones son moeradas y significativas 
+
+## ---- alpha de cronbach ----
+
+# valores cercanos a 1 más confiaibilidad, aceptables 6 
+psych::alpha(indice)
+
+
+## Indice de Apoyo a roles de genero tradicionales 
+
+# calculamos indice sumativo
+datos <- datos %>% dplyr::mutate(apoyo_roles_tradicionales = refinadas + protegidas+
+                            privilegios+ discriminacion 
+                          + trabajo)
+
+summary(datos$apoyo_roles_tradicionales) #revisamos
+
+
+# ---- 4. analisis ----
+
+## correlacion con ingreso hogar
+r <- cor(x = datos$apoyo_roles_tradicionales,
+         y = datos$ingreso_hogar,
+         use = "complete.obs")
+
+## r2 con ingreso hogar
+r^2*100
+
+## correlacion con remuneracion justa
+r <- cor(x = datos$apoyo_roles_tradicionales,
+         y = datos$remuneracion_justa,
+         use = "complete.obs")
+
+## r2 con remuneracion justa
+r^2*100
+
+
+```
+
