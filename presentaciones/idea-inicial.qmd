@@ -19,28 +19,28 @@ editor: visual
 lang: es
 ---
 
-
 ## Primera parte de la estructura de datos: *columnas y objetos*
 
-En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos ***"R es una cocina"***. 
-
+En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos tecnicos del software de lleno, sino que los iremos introducinedo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos ***"R es una cocina"***.
 
 Lo primerio, entonces, es que pensemos que RStudio, nuestra interfaz ue visualizamos en estos momentos, es una cocina. Es importante que usemos la imaginación, ya que evidentemente no se ve como una cocina.
 
-Cuando cocinamos siempre devemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*. 
+Cuando cocinamos siempre devemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*.
 
 #### Primero, debemos precalentar la cocina
+
 ```{r}
 #| echo: true
 
 pacman::p_load(beepr, dplyr, tidyverse) 
 beep(1)
 ```
+
 ::: callout-note
-Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingredientes. 
+Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalemtamos un horno o esperamos a que caliente el aceite antes de colocar los ingredientes.
 :::
 
-Con la cocina precalentada, podemos avanzar al siguiente paso. 
+Con la cocina precalentada, podemos avanzar al siguiente paso.
 
 #### Ahora debemos agregar los ingredientes...
 
@@ -68,9 +68,10 @@ ingrediente_4 <- c("pisca",
 
 ```
 
-Si vamos viendo, nuestros ingredientes se van *acumulando en el cuadrante de abajo* (como valores). En ese sentido y en contexto, nuestra cocina va *almacenando los ingredientes que queremos utilizr para hacer un plato*.  
+Si vamos viendo, nuestros ingredientes se van *acumulando en el cuadrante de abajo* (como valores). En ese sentido y en contexto, nuestra cocina va *almacenando los ingredientes que queremos utilizr para hacer un plato*.
 
-#### Ahora bien, ya con los ingredientess listos, es momento de hacer nuestro plato. Para ello hacemos lo siguiete: 
+#### Ahora bien, ya con los ingredientess listos, es momento de hacer nuestro plato. Para ello hacemos lo siguiete:
+
 ```{r}
 #| echo: true
 #| label: crear base
@@ -83,17 +84,18 @@ beep(1)
 
 Si volvemos a mirar en el cuadrante de abajo, el plato esta listo (tal como lo indica el sonido de la cocina al finalizar) y se encuentra almacenado no como un valor, sino que como un dato. Al que llamaremos, en términos más técnicos, un **objeto**.
 
-Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software: 
+Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software:
 
-> Un **plato** que corresponde a un ***objeto*** 
+> Un **plato** que corresponde a un ***objeto***
 
-> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**. 
+> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**.
 
-## Segunda parte de la estrucutra de datos: *filas y funcionamiento de una base de datos* 
+## Segunda parte de la estrucutra de datos: *filas y funcionamiento de una base de datos*
 
-Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo. 
+Pensemos que, de tanto que se ha ecnontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo.
 
-Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera: 
+Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera:
+
 ```{r}
 #| echo: true
 #| label: hormigas en el plato
@@ -111,20 +113,19 @@ plato$ID <- c("hormiga_a",
         "hormiga_j")
 ```
 
-Así, las hormigas se almacenaran en el valor `ID`, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato. 
+Así, las hormigas se almacenaran en el valor `ID`, ya que será el identifiador de cada una dentro de nuestra cocina y, especificamente, dentro de nuestro plato.
 
-Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como `gramos` y `cucharadas`). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato. 
+Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que en terminos de nuestro ejemplo son partes que componenen el ingrdientes (como `gramos` y `cucharadas`). Esto lo hicimos a proposito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuanto de cada ingrediente de nuestro plato se llevo cada hormiga, d modo que hacemos un análisis más detallado de lo qu lls se llevaron del plato.
 
-En ese sentido, ya no solo decimos 
+En ese sentido, ya no solo decimos
 
 > *"Llegaron las hormigas al plato y se llevan cosas de este"*
 
-Sino que, podemos decir cosas más especificas al respecto: 
+Sino que, podemos decir cosas más especificas al respecto:
 
-> *"Dentro del plato, la `hormiga_a` se llevo una pisca del `ingrediente_4` y la `hormiga_b` se llevo 25 miligramos del `ingrediente_3`"* 
+> *"Dentro del plato, la `hormiga_a` se llevo una pisca del `ingrediente_4` y la `hormiga_b` se llevo 25 miligramos del `ingrediente_3`"*
 
-
-#### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico? 
+#### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en especifico?
 
 Con estadística descriptiva!
 
@@ -137,9 +138,11 @@ Para ello podemos usa una tabla de contingencia, con l cual crucamos dos datos, 
 summarytools::ctable(plato$ID, plato$ingrediente_4)
 
 ```
-Aqui podemos ver que la `hormiga_a` se llevo una psica del `ingrediente_4` de nuestro plato y, al contrario, la `horrmiga_c` se llevo una cucharada. 
+
+Aqui podemos ver que la `hormiga_a` se llevo una psica del `ingrediente_4` de nuestro plato y, al contrario, la `horrmiga_c` se llevo una cucharada.
 
 #### Pero... ¿y si solo queremos ver a la hormiga g?
+
 filtramos!!
 
 ```{r}
@@ -151,80 +154,64 @@ hg <- plato %>% filter(ID == "hormiga_g")
 str(hg)
 ```
 
-Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el alamcenamiento de los ingredientes, la creación de platos y en el análisis de los proceso que pueden estar ocurriendo dentro de la misma. 
+Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el alamcenamiento de los ingredientes, la creación de platos y en el análisis de los proceso que pueden estar ocurriendo dentro de la misma.
 
-A l información que vimos en el apartado anterior, ahora se agrega un tecnicimo más: 
+A l información que vimos en el apartado anterior, ahora se agrega un tecnicimo más:
 
 > Las hormigas poseen un pocentaje del ingrediente, en ese sentido toman un valor de cada ingrediente que compone el plato y se encuentran en las **filas**
 
 > Nuestra cocina nos permite **calcular** como se dsitribuyen estos valores de cada ingrediente entre las hormigas
 
-Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempe retomando nuestro ejemplo de que **R es una cocina**. 
+Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempe retomando nuestro ejemplo de que **R es una cocina**.
 
 #### En términos concreto y hablando ya con el lenuaje de R...
 
-:::{.columns}
+::: columns
 ::: {.column width="45%"}
 ::: callout-note
 Antes recordemos tres conceptos básicos: **tablas**, **filas** y **columnas**.
 
 Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas o casillas***.
 
-- Las filas son **horizontales** 
+-   Las filas son **horizontales**
 
-- Las columnas **verticales** 
+-   Las columnas **verticales**
 
-- En la tabla estas se ***cruzan entre si***, dicho cruce son las **celdas**
+-   En la tabla estas se ***cruzan entre si***, dicho cruce son las **celdas**
 :::
 
-
-
 > *Así, una celda es el dato de un caso especifico dentro de una variable espcifica*
-
 :::
 
 ::: {.column width="45%"}
-
 ::: callout-note
-*¿Para que nos sirve saber esto?* 
+*¿Para que nos sirve saber esto?*
 
-Para entender el **funcionamiento de una base de datos**. 
+Para entender el **funcionamiento de una base de datos**.
 
 RStudio para hacer los análisis estadisticos, utiliza bases de datos, las cuales podemos entender, con la terminología que manejamos hasta ahora, como "tablas" con datos en su interiror.
 
+-   Las filas son **casos**, en nuestro ejemplo, las hormigas.
 
-- Las filas son **casos**, en nuestro ejemplo, las hormigas.
+-   Las columnas son **variables**, en nuestro ejemplo, los ingredientes.
 
-- Las columnas son **variables**, en nuestro ejemplo, los ingredientes. 
-
-- Las **bases de datos** o **data frames**, son esta estructura que combina ambas, en nuestro ejemplo, es el plato.
-
+-   Las **bases de datos** o **data frames**, son esta estructura que combina ambas, en nuestro ejemplo, es el plato.
 :::
-
-
 :::
 :::
 
-Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de "algo" y le *asignamos* los ingredientes (que, en el fondo, son valores). 
+Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de "algo" y le *asignamos* los ingredientes (que, en el fondo, son valores).
 
-> *En R, como es una cocina, trabajamos en funcion de ir creando platos (u, dicho de forma técnica, **objetos**)* 
+> *En R, como es una cocina, trabajamos en funcion de ir creando platos (u, dicho de forma técnica, **objetos**)*
 
-::: {.columns}
+::: columns
 ::: {.column width="45%"}
-
-
-a) Podemos agregar ingredientes a un mismo plato, en su proceso de preparacion,
-en un lenguaje más técnico, esto es *sobreescribir un objeto*
-
-
+a)  Podemos agregar ingredientes a un mismo plato, en su proceso de preparacion, en un lenguaje más técnico, esto es *sobreescribir un objeto*
 :::
+
 ::: {.column width="45%"}
-
-b) Podemos ir almacendando platos distintos en nuestra cocina 
-en un lenguaje más técnico, esto es *crear un objeto* 
+b)  Podemos ir almacendando platos distintos en nuestra cocina en un lenguaje más técnico, esto es *crear un objeto*
 :::
-
-
 :::
 
 ```{r}
@@ -234,78 +221,72 @@ en un lenguaje más técnico, esto es *crear un objeto*
 view(plato)
 ```
 
-#### Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad? 
+#### Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?
 
-En nuestro estudio, tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc. 
+En nuestro estudio, tendremos bases de datos provinientes de encuestas, pueden ser de opinion, censales, etc.
 
 En ese sentido, nuesta estrcutura de datos se vera de la siguiente manera:
 
-- Las filas seran **personas**
+-   Las filas seran **personas**
 
-- Las columnas **preguntas de un cuestionario** 
+-   Las columnas **preguntas de un cuestionario**
 
-- La base de datos la *combinacion de ambas*
+-   La base de datos la *combinacion de ambas*
 
-> *Así, las celdas son la respuesta especifica de una persona a una pregunta especifica *
-
+> *Así, las celdas son la respuesta especifica de una persona a una pregunta especifica*
 
 Si lo vemos dentro de nuestra analogia:
 
-- *La **encuesta** es nuestro **plato*** 
+-   *La **encuesta** es nuestro **plato***
 
-- *Las **preguntas** son los **ingredientes** que componene ese plato* 
+-   *Las **preguntas** son los **ingredientes** que componene ese plato*
 
-Al entender que las hormigas sacan un pocentaje de los ingredientes,le entregamos un ***valor especifico a cada una de ese ingrediente***. 
+Al entender que las hormigas sacan un pocentaje de los ingredientes,le entregamos un ***valor especifico a cada una de ese ingrediente***.
 
-##### En ese sentido: 
+##### En ese sentido:
 
 > Cierto porcentaje del ingrediente le pertenece a una hormiga
 
 ##### En los datos de una encuesta:
 
-> Cierto porcentaje del dato le pertenece a una persona, ya que aquello es su respuesta a la pregunta del cuestionario 
+> Cierto porcentaje del dato le pertenece a una persona, ya que aquello es su respuesta a la pregunta del cuestionario
 
 ### Entonces, dentro de la investigación sociologica y estadistica lo que hacemos es:
 
 Utilizar nuestra ***cocina estadistica*** para observar esas respuestas que tienen un valor para nosotres.
 
+Las respuestas de las personas nos indican **tendencias, percepciones, y condiciones objetivas en las que viven**. Esos datos son valiosos para nuestra labor, ya que podemos analizarlos para tener una nocion de *cómo se distirbuyen dichas caracterisitcas en la sociedad*.
 
-Las respuestas de las personas nos indican **tendencias, percepciones, y condiciones objetivas en las que viven**. Esos datos son valiosos para nuestra labor, ya que podemos analizarlos para tener una nocion de *cómo se distirbuyen dichas caracterisitcas en la sociedad*. 
-
-Del mismo modo, que podriamos ver cómo se distribuye cierto ingrediente en las homigas, o que ingrediente prefieren más la homrigas solo observando sus frecuencias e idnetificando el ingrediente más popular. 
+Del mismo modo, que podriamos ver cómo se distribuye cierto ingrediente en las homigas, o que ingrediente prefieren más la homrigas solo observando sus frecuencias e idnetificando el ingrediente más popular.
 
 *¿Cuál es la utilidad de eso en lo concreto?*
 
 Nos permite para relizar **hipótesis** y **preguntas de investigación**.
 
-::: {.columns}
-
+::: columns
 ::: {.column width="45%"}
-
-> En el **caso de las hormigas**, podriamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino y esa razón podria ser una posible explicación a su baja frecuencia. U otra hipótesis, podría ser que ese ingediente es más dificl de conseguir del plato. 
+> En el **caso de las hormigas**, podriamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino y esa razón podria ser una posible explicación a su baja frecuencia. U otra hipótesis, podría ser que ese ingediente es más dificl de conseguir del plato.
 :::
 
 ::: {.column width="45%"}
+> En **Ciencias Sociales**, algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con analisis decriptivos ya podemos ver brechas, desigualdades y aproximaciones a la distribución, segun los estadisticos que calculemos.
 
-> En **Ciencias Sociales**, algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con analisis decriptivos ya podemos ver brechas, desigualdades y  aproximaciones a la distribución, segun los estadisticos que calculemos.
-
-> Así, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto máximo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad evidente. Desde ahi, podemos intuir cuestionamieno y trazar hipotesis que expliquen aquello, las cuales nos lleven a indigar más del fenómeno. 
-
+> Así, si encontraramos que el promedio de las personas tiene un ingreso de 500000 pesos en su hogar, pero que el monto máximo reportado dentro de esa pregunta es 20 millones, ya vemos que se presenta una desigualdad evidente. Desde ahi, podemos intuir cuestionamieno y trazar hipotesis que expliquen aquello, las cuales nos lleven a indigar más del fenómeno.
 :::
 :::
 
-----
-## Procesmaiento de los datos 
+------------------------------------------------------------------------
 
-Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables. 
+## Procesmaiento de los datos
 
-Pnesemos en un plato concreto 
+Hasta ahora, trabajams con un plato X, sin nombre, los ingredientes tampoco eran identificables.
 
-### Creemos más platos 
+Pnesemos en un plato concreto
 
+### Creemos más platos
 
+## limpieza de datos propiamnete tal
 
-## limpieza de datos propiamnete tal 
 ```{r}
 #| echo: false
 #| label: observamos primera
@@ -315,6 +296,4 @@ sjmisc::frq(plato$ingrediente_4) #sin embargo, esta desordenado
 
 Se ve que est desordenado, podemos arreglarlo!!
 
-limpiando los datos... pero ¿cómo lo hacemos? con el paquete dplyr 
-
-
+limpiando los datos... pero ¿cómo lo hacemos? con el paquete dplyr

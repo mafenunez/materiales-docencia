@@ -1,0 +1,676 @@
+---
+title: "Práctica 2. Conocimientos básicos de programación en R"
+date: "2025-05-22"
+fontsize: 15pt
+format:
+  html:
+    css: custom_2020.css
+    toc: true
+    toc-location: right
+    toc-depth: 3
+    toc-expand: 2
+    toc-title: Contenidos
+    number-sections: true
+    number-depth: 1
+    title-block-banner: "#00788d"
+    title-block-banner-color: "white"
+   # template-partials:
+   #   - ./html/title-block.html
+editor: visual
+lang: es
+
+---
+ 
+# Presentación
+
+## 0. Objetivo de la práctica
+
+El objetivo de esta guía práctica es introducirnos en los procedimientos básicos del uso del lenguaje y ambiente R.
+
+En detalle, aprenderemos:
+
+
+1. R como una cocina
+
+2. Herramientas básicas de programación en R
+
+3. Operadores en R
+
+4. Tipos de datos
+
+
+
+## 1. R es una cocina
+
+En la sesión de hoy, comenzaremos de forma distinta, no utilizaremos los conceptos técnicos del software de lleno, sino que los iremos conociendo de a poco. Para cumplir ese objetivo, es que la idea es iniciar con un ejemplo, al que llamaremos ***"R es una cocina"***.
+
+Lo primero, entonces, es que pensemos que RStudio, nuestra interfaz que visualizamos en estos momentos, es una cocina. Es importante que usemos la imaginación, ya que evidentemente no se ve como una cocina.
+
+<br>
+
+### 1.1 Primera parte de la estructura de datos: *columnas y objetos*
+
+<br>
+
+Cuando cocinamos siempre debemos realizar un paso previo antes de todo: *preparar la cocina o el espacio de trabajo*.
+
+#### Primero, debemos precalentar la cocina
+
+```{r}
+#| echo: true
+
+pacman::p_load(beepr, dplyr, tidyverse) 
+beep(1)
+```
+
+::: callout-note
+Sin este paso, no podemos empezar a trabajar en nuestra sesión, por eso es muy impotante. Al igual que cuando precalentamos un horno o esperamos a que caliente el aceite antes de colocar los ingredientes.
+:::
+
+Con la cocina precalentada, podemos avanzar al siguiente paso.
+
+#### Ahora debemos agregar los ingredientes...
+
+::: callout-important
+Deben ser la misma cantidad de elementos dentro del parentésis
+:::
+
+```{r}
+#| echo: true
+#| label: crear objetos
+
+ingrediente_1 <- c(2,3,4,5,6,7,4,3,8,1) #10 casos
+ingrediente_2 <- c(100, 200, 50, 30, 100, 91, 87, 100, 55, 61)
+ingrediente_3 <- c(10, 25,30,35,35,20,15,10,20, 25)
+ingrediente_4 <- c("pisca", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "pisca", 
+                   "pisca", 
+                   "cucharadita", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "cucharada", 
+                   "cucharada")
+
+```
+
+Si vamos viendo, nuestros ingredientes se van *acumulando en el cuadrante de abajo* (como valores). En ese sentido y en contexto de nuestro ejemplo, nuestra cocina va *almacenando los ingredientes que queremos utilizar para hacer un **plato***.
+
+#### Ahora bien, ya con los ingredientes listos, es momento de hacer nuestro plato. Para ello, hacemos lo siguiete:
+
+```{r}
+#| echo: true
+#| label: crear base
+plato <- data.frame(ingrediente_1, 
+                    ingrediente_2,
+                    ingrediente_3, 
+                    ingrediente_4)
+beep(1)
+```
+
+Si volvemos a mirar en el cuadrante de abajo, el plato está listo (tal como lo indica el sonido de la cocina al finalizar la acción) y se encuentra almacenado no como un valor, sino que como un **dato**. Al que llamaremos, en términos más técnicos, un ***objeto***.
+
+Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecnicismos del software:
+
+<br>
+
+> Un **plato** que corresponde a un ***objeto***
+
+> Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**.
+
+<br>
+<br>
+
+### 1.2 Segunda parte de la estructura de datos: *filas y funcionamiento de una base de datos*
+
+<br>
+
+Pensemos que, de tanto que se ha encontrado el plato dentro de la cocina, llegaron las **hormigas** a buscarlo.
+
+Para seguir con la idea, debemos agregarlas de forma manual, de la siguiente manera:
+
+```{r}
+#| echo: true
+#| label: hormigas en el plato
+
+
+plato$ID <- c("hormiga_a",
+        "hormiga_b", 
+        "hormiga_c", 
+        "hormiga_d", 
+        "hormiga_e", 
+        "hormiga_f",
+        "hormiga_g", 
+        "hormiga_h", 
+        "hormiga_i", 
+        "hormiga_j")
+```
+
+Así, las hormigas se almacenaran en el valor `ID`, ya que será el identificador de cada una dentro de nuestra cocina y, específicamente, dentro de nuestro plato.
+
+Si retomamos la estrcutura de datos de nuestros ingredientes, estos se componene de 10 valores, que, en términos de nuestro ejemplo, son *partes* que componenen el ingrdiente (como `gramos` y `cucharadas`). Esto lo hicimos a propósito, para que cada valor o parte del ingrediente este asociado a cada hormiga. De ese modo, podemos ver cuánto de cada ingrediente de nuestro plato se llevo cada hormiga y, con esto, hacemos un análisis más detallado de lo que ellas se llevaron del plato.
+
+En ese sentido, ya no sólo decimos:
+
+> *"Llegaron las hormigas al plato y se llevan cosas de este"*
+
+Sino que, podemos decir cosas más específicas al respecto:
+
+> *"Dentro del plato, la `hormiga_a` se llevo una pisca del `ingrediente_4` y la `hormiga_b` se llevo 25 milígramos del `ingrediente_3`"*
+
+<br>
+<br>
+
+#### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en específico?
+
+<br>
+
+¡Con estadística descriptiva!
+
+<br>
+
+Para ello, podemos usar una tabla de contingencia, con la cual cruzamos dos datos, en este caso hormigas con el `ingrediente_4`. Quedaría algo así:
+
+```{r}
+#| echo: true
+#| label: cuanto del ingrediente 1 se llevo cada hormiga
+
+summarytools::ctable(plato$ID, plato$ingrediente_4)
+
+```
+
+Aquí podemos ver que la `hormiga_a` se llevo una pisca del `ingrediente_4` de nuestro plato y, al contrario, la `horrmiga_c` se llevo una cucharada.
+
+#### Pero... ¿y si sólo queremos ver a la hormiga g?
+
+<br>
+
+¡Filtramos!
+
+<br>
+
+```{r}
+#| echo: true
+#| label: hormiga g
+
+hg <- plato %>% filter(ID == "hormiga_g")
+
+str(hg)
+```
+
+Hasta acá hemos visto la utilidad de nuestra cocina, tanto en el almacenamiento de los ingredientes, la creación de platos y en el análisis de los procesos que pueden estar ocurriendo dentro de la misma.
+
+A la información que vimos en el apartado anterior, ahora se agrega un tecnicismo más:
+
+> Las hormigas poseen un pocentaje del ingrediente, en ese sentido, toman un valor de cada ingrediente que compone el plato, lo que se encuentra en las **filas**
+
+> Nuestra cocina nos permite **calcular** cómo se distribuyen estos valores de cada ingrediente entre las hormigas
+
+Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempre retomando nuestro ejemplo de que **R es una cocina**.
+
+<br>
+<br>
+
+#### En términos concretos y hablando ya con el lenuaje de R...
+
+<br>
+
+::: columns
+::: {.column width="45%"}
+
+Antes recordemos tres conceptos básicos: **tablas**, **filas** y **columnas**.
+
+Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas o casillas***.
+
+-   Las filas son **horizontales**
+
+-   Las columnas **verticales**
+
+-   En la tabla estas se ***cruzan entre sí***, dicho cruce son las **celdas**
+
+:::
+
+::: {.column width="45%"}
+*¿Para qué nos sirve saber esto?*
+
+Para entender el **funcionamiento de una base de datos**.
+
+RStudio para hacer los análisis estadísticos, utiliza bases de datos, las cuales podemos entender, con la terminología que manejamos hasta ahora, como "tablas" con datos en su interior.
+
+:::
+:::
+
+> *Así, una celda es el dato de un caso específico dentro de una variable específica*
+
+<br>
+
+Entonces, hasta ahora tenemos lo siguiente:
+
+| Estructura básica       | En Ciencias Sociales          | En nuestro ejemplo|
+|-------------------------|-------------------------------|-------------|
+| Fila                    | Casos                         | Hormigas    |
+| Columnas                | Variables                     | Ingredientes|
+| Combinación de ambas    | Bases de datos o data frames  | Plato       |
+
+
+<br>
+<br>
+
+Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de "algo" y le *asignamos* los ingredientes (que, en el fondo, son valores).
+
+> *En R, como es una cocina, trabajamos en función de ir creando platos (u, dicho de forma técnica, **objetos**)*
+
+::: columns
+::: {.column width="45%"}
+a)  Podemos agregar ingredientes a un mismo plato, en su proceso de preparación, en un lenguaje más técnico, esto es ***sobreescribir un objeto***
+:::
+
+::: {.column width="45%"}
+b)  Podemos ir almacendando platos distintos en nuestra cocina, en un lenguaje más técnico, esto es ***crear un objeto***
+:::
+:::
+
+```{r}
+#| echo: true
+#| label: ver
+
+view(plato)
+```
+
+<br>
+
+#### Ahora que entendemos la estructura de datos, ¿cómo se ve esto en la realidad?
+
+<br>
+
+En nuestro estudio, tendremos bases de datos provinientes de encuestas, pueden ser de opinión, censales, etc.
+
+En ese sentido, nuesta estructura de datos se verá de la siguiente manera:
+
+-   Las filas serán **personas**
+
+-   Las columnas **preguntas de un cuestionario**
+
+-   La base de datos la *combinacion de ambas*
+
+> *Así, las celdas son la respuesta específica de una persona a una pregunta específica*
+
+<br>
+
+Si lo vemos dentro de nuestra analogía:
+
+-   *La **encuesta** es nuestro **plato***
+
+-   *Las **preguntas** son los **ingredientes** que componene ese plato*
+
+Al entender que las hormigas sacan un pocentaje de los ingredientes, le entregamos un ***valor específico a cada una de ese ingrediente***.
+
+En ese sentido:
+
+> Cierto porcentaje del ingrediente le pertenece a una hormiga
+
+En los datos de una encuesta:
+
+> Cierto porcentaje del dato le pertenece a una persona, ya que aquello es su respuesta a la pregunta del cuestionario
+
+<br>
+
+### 1.3 Entonces, dentro de la investigación sociológica y estadística lo que hacemos es:
+
+<br>
+
+Utilizar nuestra ***cocina estadística*** para observar esas respuestas que tienen un valor para nosotr-s.
+
+Las respuestas de las personas nos indican **tendencias, percepciones, y condiciones objetivas en las que viven**. Esos datos son valiosos para nuestra labor, ya que podemos analizarlos para tener una noción de *cómo se distirbuyen dichas caracterísitcas en la sociedad*.
+
+Del mismo modo, podriamos ver cómo se distribuye cierto ingrediente en las homigas, o qué ingrediente prefieren más la hormigas sólo observando sus frecuencias e identificando el ingrediente más popular.
+
+<br>
+
+*¿Cuál es la utilidad de eso en lo concreto?*: Nos permite realizar **hipótesis** y **preguntas de investigación**.
+
+<br>
+
+
+| En el caso de las hormigas... | En Ciencias Sociales... |
+|-------------------------------|--------------------------|
+| Podríamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino, y esa razón podría ser una posible explicación a su baja frecuencia. Otra hipótesis podría ser que ese ingrediente es más difícil de conseguir del plato. | Algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con análisis descriptivos ya podemos ver brechas, desigualdades y aproximaciones a la distribución, según los estadísticos que calculemos. |
+
+<br>
+
+Con esto en mente, ¡ya podemos andentrarnos a un lenguaje más técnico y los conocimientos básicos de programación para utilizar RStudio!
+
+## 2. Conocimientos básicos de programación 
+
+Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente: 
+
+- Primero, ¿qué es codificar?, en programación **codificar corresponde a un proceso de entrega de instrucciones** en un lenguaje específico, siguiendo un orden lógico y coherente. 
+
+- Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; **_existe un acuerdo implícito entre tú y R_: R hará todos los cálculos por ti, pero en cambio _tú_ debes dar las instrucciones con total precisión.**
+
+### 2.1 R como calculadora
+
+Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
+
+```{r, collapse=FALSE}
+5+5
+
+25/5
+
+2*2
+
+27-2
+
+```
+
+Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
+
+```{r, collapse=FALSE}
+12*(7+2)+(45-32)+8
+
+22^2 - 2^2
+
+1/200 * 30
+```
+
+Siguiendo el ejemplo de las hormigas, estas acciones son las que nos permiten utilizar la cocina para calcular distribuciones de los ingredientes por hormiga. 
+
+### 2.2 Un lenguaje orientado a objetos
+
+En nuestro ejemplo, hablamos de sobreescribir y crear objetos, si bien lo hicimos sin saber muy bien a qué nos referiamos, dentro de lo más técnico lo podemos entender de la siguiente manera: 
+
+Lo primero, la frase que utiliaremos de aquí en adelante: **R es un lenguaje de programación orientado a objetos**. 
+
+*¿Qué significa eso?*: implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos. 
+
+Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de **asignación**, tendrán la *misma estructura*:
+
+`nombre_objeto <- valor`
+
+El asignador `<-` se utiliza para crear objetos y forma parte de uno de los **operadores** usados en R. 
+
+Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes `" "` y vectores que corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar = `c()`.
+
+Veamos un ejemplo creando objetos:
+
+```{r, collapse=FALSE}
+x <- 4 # asignar
+
+x # ejecutar
+
+y <- "Hola mundo" # los carácteres alfabéticos siempre van acompañados de corchetes
+
+y 
+
+```
+
+
+¿Y concatenando? Hacemos un **vector**.
+
+Esto es lo que hicimos para crear los ingredientes del plato, el plato y las hormigas del plato. En definitiva creamos vectores y aquello lo hicimos a partir de la creación de obejtos: Es decir, asignamos valores concatenados a un objeto contenedor de esta información (en este caso, que llamamos `ingrediente_1`, `ingrediente_2`, `ingrediente_3`, `ingrediente_4` `plato`y `ID`)
+
+```{r}
+#| echo: true
+
+ingrediente_1 <- c(2,3,4,5,6,7,4,3,8,1) #10 casos
+ingrediente_2 <- c(100, 200, 50, 30, 100, 91, 87, 100, 55, 61)
+ingrediente_3 <- c(10, 25,30,35,35,20,15,10,20, 25)
+ingrediente_4 <- c("pisca", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "pisca", 
+                   "pisca", 
+                   "cucharadita", 
+                   "cucharadita", 
+                   "cucharada", 
+                   "cucharada", 
+                   "cucharada")
+
+plato$ID <- c("hormiga_a",
+        "hormiga_b", 
+        "hormiga_c", 
+        "hormiga_d", 
+        "hormiga_e", 
+        "hormiga_f",
+        "hormiga_g", 
+        "hormiga_h", 
+        "hormiga_i", 
+        "hormiga_j")
+
+```
+
+
+Ahora, *¿cómo se vería esto en vectores que utilizaríamos para un trabajo?*:
+
+```{r, collapse=FALSE}
+edad <- c(18,22,36,19,35) # concatenar (variable de razon)
+
+edad
+
+genero <- c(3,1,1,2,3) # masculino = 1; femenino = 2; transgenero = 3 (variable nominal)
+
+genero 
+
+gse <- c("ABC1", "C2", "E", "AbC1", "E")  # tambíen se pueden usar carácteres (variable ordinal)
+
+gse
+```
+
+
+**¡Hagamos una pequeño reto!**: ¿Cuál es el valor de a y b? Si a <- 5; b <- a; a <- 4
+
+```{r, collapse=FALSE}
+
+a <- 5
+b <- a
+a <- 4
+
+print(a) # imprimir en la consola
+
+print(b)
+
+a + 10
+```
+
+Y... *¿En el ejemplo de las hormigas?*:
+
+```{r}
+# Para observar los valores del ingrediente 1
+
+print(ingrediente_1) 
+
+```
+
+
+Sin embargo, considerando que anteriomente alojamos el `ingrediente_1` en el objeto `plato`, podemos hacer lo siguiente también para observar los valores del `ingrediente_1`:
+
+```{r}
+print(plato$ingrendiente_1)
+```
+
+El signo `$` es otro operador importante, que nos permite indicar en qué objeto está almacenada cierta variable que queremos observar. 
+
+*¿Por qué debemos utilizarlo?* Por nuestra premisa inicial: Dado que *R esta orientado a la creación de objetos*, por ende cualquier valor esta almacenado en un objeto. En este caso `ingrediente_1` lo integramos dentro del objeto `plato`.
+
+Esto último esta vinculado a un proceso fundamental en R: la creación de **data.frames**, ya que si vemos la naturaleza del objeto `plato` con la función `class(plato)`, esto nos indicará que se trata de un data.frame.
+
+Un **Data.frame** es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. *Es como "pegar" las columnas (variables) una al lado de otra*. 
+
+Para verlo con otro ejemplo, creemos un data.frame con los vectores que ya creamos antes:
+
+```{r, collapse=FALSE}
+base1 <- data.frame(genero, gse, edad) # Resulta como objeto de "datos" en
+                                       # entorno.
+
+base1
+
+```
+
+Como puedes ver, para crear el data.frame, tanto en este ejemplo como cuando creamos el plato, usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`. 
+
+Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
+
+```{r, collapse=FALSE}
+# Ejemplo de como crear un data.frame desde 0: 
+
+base2 <- data.frame(Sexo=c("H","M","H","M","H","M"),
+                    Estatura=c(1.83,1.76,1.82,1.60,1.90,1.66),
+                    Peso=c(67,58,66,48,75,55))
+
+head(base2)  # Me permite visualizar las primeras filas
+
+```
+
+<br>
+
+Ahora, siguiendo con el juego de calcular. Sea z = a^2 ¿qué resultado obtenemos de a * b + z?
+
+```{r, collapse=FALSE}
+z <- a^2 # asignar
+
+a * b + z
+```
+
+## 3. Operadores en R
+
+Antes de trabajar con datos, debemos conocer el concepto de **operadores**. Estos símbolos no son de uso exclusivo en R, pero no todos tienen el mismo significado que en otros softwares.
+
+Los operadores son símbolos que permiten, en los distintos procedimientos de procesamiento, simplificar procesos. Por ejemplo, serán útilizados cuando filtremos nuestros datos para personas de ciertas categorías, cuando calculemos variables nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos “concatenados”.
+
+
+![](../images/operadores.png)
+
+¡Veamos algunos ejemplos!
+
+```{r, collapse=FALSE}
+20 == 5 # igualdad
+
+30 >= 14 # mayor o igual que
+
+22 <= 2 # menor o igual que
+
+25 != 10 # no es igual a
+
+p = 10; y = 5; p <= y # operatoria en objetos
+
+```
+
+
+## 4. Tipos de datos
+
+### 4.1 ¿Qué son los tipos de datos?
+
+En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis. 
+
+**Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables** a las que corresponden. Como viste en clases, la teoría de los niveles de medición contempla cuatro tipos: 
+
+![](../images/noir2.jpg)
+
+### 4.2 ¿Qué tipos de datos encontramos en R?
+
+Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta [International Social Survey Programme del 2019](https://www.gesis.org/en/issp/home). Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).  
+
+```{r, eval=TRUE}
+#cargamos la base de datos desde internet
+
+load(url("https://github.com/Andreas-Lafferte/descriptiva/blob/main/data/db-proc.RData?raw=true"))
+
+head(rand_df) # ver primeros casos de la base
+```
+
+
+#### I) Character
+
+Los datos `character` están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable **pais**, que detalla el país de procedencia de la persona encuestada.
+
+Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos:
+
+```{r, collapse=FALSE}
+class(rand_df$pais) # siempre es la misma estructura = base$variable
+```
+
+Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.
+
+#### II) Factor
+
+Las variables de tipo `factor` son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.
+
+
+```{r, collapse=FALSE}
+class(rand_df$sexo)
+
+class(rand_df$ideologia)
+```
+
+
+#### III) Numeric
+
+Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). 
+
+```{r, collapse=FALSE}
+class(rand_df$edad)
+
+```
+
+## 5. Cargar librerías
+
+En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.
+
+Usualmente para cargar paquetes lo hacemos de la siguiente manera:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("paquete")
+library(paquete)
+```
+
+Pero en esta ocasión utilizaremos un paquete llamado **pacman**, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman")
+library(pacman)
+```
+
+Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.
+
+En este práctico utilizaremos seis paquetes
+
+1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2.  `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
+
+3.  `dplyr`: nos permite seleccionar variables de un set de datos
+
+4.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+5.  `car`: para recodificar/agrupar valores de variables
+
+
+```{r echo=TRUE}
+pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
+               dplyr, # para manipular datos
+               haven, # para importar datos
+               car # para recodificar datos
+               )
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+
+Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete `pacman`). 
+
+
+# Resumen
+
+Hoy aprendimos distintas herramientas básicas para utilizar el lenguaje y ambiente R. Como resumen:
+
+- Estructura de datos en R: filas, columnas, data.frames
+
+- Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames
+
+- Operadores en R
+
+- Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
+
+
