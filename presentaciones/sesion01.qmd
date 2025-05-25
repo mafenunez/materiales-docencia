@@ -88,7 +88,7 @@ Equipo docente Estadística Descriptiva
 
 ## [¿Qué es un ***estadístico***?]{.white}{data-background-color="#00788d"}
 
-*anadir imagen de estadisitocs 
+*anadir imagen de estadisticos 
 marcar los que veremos hoy 
 
 # [**Frecuencias**]{.white}{data-background-color="#bc3c6f"}
