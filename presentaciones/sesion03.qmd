@@ -1,0 +1,110 @@
+---
+tpagtitle: "Ayudantia 03"
+author: "Equipo docente"
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+
+format: 
+  revealjs:
+    logo: ../images/logo.png
+    slide-number: true
+    theme: [pp.scss]
+    title-slide-attributes:
+      visibility: false
+      data-background-image: images/logo.png
+      data-background-size: ../images/logo.png
+    auto-play-media: true
+
+
+editor:
+  render-on-save: true
+---
+
+## {data-background-color="#00788d"}
+:::: {.columns .v-center-container}
+::: {.column width=20%}
+![](../images/logo.png){width="80%" fig-align="right"} <br>
+
+:::
+::: {.column width=80%}
+
+# [Tercera sesión de ayudantía: <br> Medidas de [***Posición y Forma***]{.purple}]{.white} 
+
+------------------------------------------------------------------------
+<br>
+Equipo docente Estadística Descriptiva 
+:::
+::::
+
+## [**Sesión de hoy**]{.white}{data-background-color="#00788d"}
+
+
+:::: {.columns}
+
+::: {.column width="45%" style="background-color: #bc3c6f; min-height: 100vh;"}
+### [**1. Presentación**]{.black}
+
+#### [***Medidas de posición***]{.white} 
+[ Q1 - Q3 -  Percentiles]{.black}
+
+<br>
+
+#### [***Medidas de forma***]{.white}
+[Curtosis - Asimetría]{.black}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+
+### [**2. Guía de ejercicios**]{.black}
+
+[La puedes descargar haciendo click aquí.]{.black}
+:::
+::::
+
+
+
+
+
+## 
+
+:::{.columns}
+::: {.column width="60%"}
+![]()
+:::
+
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+::: {.callout-note title="Definición"}
+Un estadístico es..
+:::
+:::
+:::
+
+
+# [**Medidas de posición**]{.white}{data-background-color="#bc3c6f"}
+
+## [<span style="background:#bc3c6f"> ***Q1***</span>]{.white}{data-background-color="#00788d"}
+
+## [<span style="background:#bc3c6f"> ***Q3***</span>]{.white}{data-background-color="#00788d"}
+
+## [<span style="background:#bc3c6f"> ***Percentiles***</span>]{.white}{data-background-color="#00788d"}
+
+# [**Medidas de forma**]{.white}{data-background-color="#bc3c6f"}
+
+## [Distribución normal]{.white}{data-background-color="#00788d"}
+
+## [<span style="background:#bc3c6f">**Asimetría**</span>]{.white}{data-background-color="#00788d"}
+
+## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}{data-background-color="#00788d"}
+
+
+## [*Gracias por su atención*]{.white}{data-background-color="#bc3c6f"} 
+![](../images/logo.png){width="80%" fig-align="right"} 

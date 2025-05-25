@@ -72,10 +72,22 @@ Equipo docente Estadística Descriptiva
 
 
 
-## [¿Qué es un ***estadístico***?]{.white}{data-background-color="#00788d"}
+## [¿Qué es un ***estadístico***?]{.black}
 
-*anadir imagen de estadisticos 
-marcar los que veremos hoy 
+:::{.columns}
+::: {.column width="60%"}
+![]()
+:::
+
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+::: {.callout-note title="Definición"}
+Un estadístico es..
+:::
+:::
+:::
+
 
 # [**Frecuencias**]{.white}{data-background-color="#bc3c6f"}
 

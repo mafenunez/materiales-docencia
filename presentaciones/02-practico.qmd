@@ -18,9 +18,8 @@ format:
    #   - ./html/title-block.html
 editor: visual
 lang: es
-
 ---
- 
+
 # Presentación
 
 ## 0. Objetivo de la práctica
@@ -29,16 +28,13 @@ El objetivo de esta guía práctica es introducirnos en los procedimientos bási
 
 En detalle, aprenderemos:
 
+1.  R como una cocina
 
-1. R como una cocina
+2.  Herramientas básicas de programación en R
 
-2. Herramientas básicas de programación en R
+3.  Operadores en R
 
-3. Operadores en R
-
-4. Tipos de datos
-
-
+4.  Tipos de datos
 
 ## 1. R es una cocina
 
@@ -119,8 +115,7 @@ Así, tenemos hasta ahora, combinando el contexto de nuestro ejemplo y los tecni
 
 > Cuatro **ingredientes** que componen el plato, que son ***valores*** que integran el objeto, dispuestos en **columnas**.
 
-<br>
-<br>
+<br> <br>
 
 ### 1.2 Segunda parte de la estructura de datos: *filas y funcionamiento de una base de datos*
 
@@ -159,8 +154,7 @@ Sino que, podemos decir cosas más específicas al respecto:
 
 > *"Dentro del plato, la `hormiga_a` se llevo una pisca del `ingrediente_4` y la `hormiga_b` se llevo 25 milígramos del `ingrediente_3`"*
 
-<br>
-<br>
+<br> <br>
 
 #### Ahora bien, ¿cómo podemos ver cuánto saco cada hormiga de un ingediente en específico?
 
@@ -209,8 +203,7 @@ A la información que vimos en el apartado anterior, ahora se agrega un tecnicis
 
 Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ciencia de datos. Ahora, nos iremos a lo técnico, pero siempre retomando nuestro ejemplo de que **R es una cocina**.
 
-<br>
-<br>
+<br> <br>
 
 #### En términos concretos y hablando ya con el lenuaje de R...
 
@@ -218,7 +211,6 @@ Con lo anterior, ya podemos describirlo y entenderlo en el lenguaje de R y de ci
 
 ::: columns
 ::: {.column width="45%"}
-
 Antes recordemos tres conceptos básicos: **tablas**, **filas** y **columnas**.
 
 Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas o casillas***.
@@ -228,7 +220,6 @@ Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas
 -   Las columnas **verticales**
 
 -   En la tabla estas se ***cruzan entre sí***, dicho cruce son las **celdas**
-
 :::
 
 ::: {.column width="45%"}
@@ -237,7 +228,6 @@ Una ***tabla** esta compuesta por filas y columnas*, y aquello entrega ***celdas
 Para entender el **funcionamiento de una base de datos**.
 
 RStudio para hacer los análisis estadísticos, utiliza bases de datos, las cuales podemos entender, con la terminología que manejamos hasta ahora, como "tablas" con datos en su interior.
-
 :::
 :::
 
@@ -247,15 +237,13 @@ RStudio para hacer los análisis estadísticos, utiliza bases de datos, las cual
 
 Entonces, hasta ahora tenemos lo siguiente:
 
-| Estructura básica       | En Ciencias Sociales          | En nuestro ejemplo|
-|-------------------------|-------------------------------|-------------|
-| Fila                    | Casos                         | Hormigas    |
-| Columnas                | Variables                     | Ingredientes|
-| Combinación de ambas    | Bases de datos o data frames  | Plato       |
+| Estructura básica    | En Ciencias Sociales         | En nuestro ejemplo |
+|----------------------|------------------------------|--------------------|
+| Fila                 | Casos                        | Hormigas           |
+| Columnas             | Variables                    | Ingredientes       |
+| Combinación de ambas | Bases de datos o data frames | Plato              |
 
-
-<br>
-<br>
+<br> <br>
 
 Ahora bien, lo que hicimos en la práctica con el plato, es que este se comporta como el almacenador de "algo" y le *asignamos* los ingredientes (que, en el fondo, son valores).
 
@@ -332,26 +320,25 @@ Del mismo modo, podriamos ver cómo se distribuye cierto ingrediente en las homi
 
 <br>
 
-
-| En el caso de las hormigas... | En Ciencias Sociales... |
-|-------------------------------|--------------------------|
+| En el caso de las hormigas...                                                                                                                                                                                                     | En Ciencias Sociales...                                                                                                                                                                                       |
+|---------------------------------------|---------------------------------|
 | Podríamos hipotetizar, por ejemplo, que el ingrediente 1 es más dañino, y esa razón podría ser una posible explicación a su baja frecuencia. Otra hipótesis podría ser que ese ingrediente es más difícil de conseguir del plato. | Algo similar se ve cuando evaluamos los ingresos a nivel de hogar. Con análisis descriptivos ya podemos ver brechas, desigualdades y aproximaciones a la distribución, según los estadísticos que calculemos. |
 
 <br>
 
 Con esto en mente, ¡ya podemos andentrarnos a un lenguaje más técnico y los conocimientos básicos de programación para utilizar RStudio!
 
-## 2. Conocimientos básicos de programación 
+## 2. Conocimientos básicos de programación
 
-Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente: 
+Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente:
 
-- Primero, ¿qué es codificar?, en programación **codificar corresponde a un proceso de entrega de instrucciones** en un lenguaje específico, siguiendo un orden lógico y coherente. 
+-   Primero, ¿qué es codificar?, en programación **codificar corresponde a un proceso de entrega de instrucciones** en un lenguaje específico, siguiendo un orden lógico y coherente.
 
-- Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; **_existe un acuerdo implícito entre tú y R_: R hará todos los cálculos por ti, pero en cambio _tú_ debes dar las instrucciones con total precisión.**
+-   Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; ***existe un acuerdo implícito entre tú y R*****: R hará todos los cálculos por ti, pero en cambio *tú* debes dar las instrucciones con total precisión.**
 
 ### 2.1 R como calculadora
 
-Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
+Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora.
 
 ```{r, collapse=FALSE}
 5+5
@@ -364,7 +351,7 @@ Uno de los usos más sencillos y que están a la base de R, es usarlo como una c
 
 ```
 
-Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
+Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos.
 
 ```{r, collapse=FALSE}
 12*(7+2)+(45-32)+8
@@ -374,21 +361,21 @@ Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en 
 1/200 * 30
 ```
 
-Siguiendo el ejemplo de las hormigas, estas acciones son las que nos permiten utilizar la cocina para calcular distribuciones de los ingredientes por hormiga. 
+Siguiendo el ejemplo de las hormigas, estas acciones son las que nos permiten utilizar la cocina para calcular distribuciones de los ingredientes por hormiga.
 
 ### 2.2 Un lenguaje orientado a objetos
 
-En nuestro ejemplo, hablamos de sobreescribir y crear objetos, si bien lo hicimos sin saber muy bien a qué nos referiamos, dentro de lo más técnico lo podemos entender de la siguiente manera: 
+En nuestro ejemplo, hablamos de sobreescribir y crear objetos, si bien lo hicimos sin saber muy bien a qué nos referiamos, dentro de lo más técnico lo podemos entender de la siguiente manera:
 
-Lo primero, la frase que utiliaremos de aquí en adelante: **R es un lenguaje de programación orientado a objetos**. 
+Lo primero, la frase que utiliaremos de aquí en adelante: **R es un lenguaje de programación orientado a objetos**.
 
-*¿Qué significa eso?*: implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos. 
+*¿Qué significa eso?*: implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos.
 
 Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de **asignación**, tendrán la *misma estructura*:
 
 `nombre_objeto <- valor`
 
-El asignador `<-` se utiliza para crear objetos y forma parte de uno de los **operadores** usados en R. 
+El asignador `<-` se utiliza para crear objetos y forma parte de uno de los **operadores** usados en R.
 
 Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes `" "` y vectores que corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar = `c()`.
 
@@ -404,7 +391,6 @@ y <- "Hola mundo" # los carácteres alfabéticos siempre van acompañados de cor
 y 
 
 ```
-
 
 ¿Y concatenando? Hacemos un **vector**.
 
@@ -440,7 +426,6 @@ plato$ID <- c("hormiga_a",
 
 ```
 
-
 Ahora, *¿cómo se vería esto en vectores que utilizaríamos para un trabajo?*:
 
 ```{r, collapse=FALSE}
@@ -457,8 +442,7 @@ gse <- c("ABC1", "C2", "E", "AbC1", "E")  # tambíen se pueden usar carácteres 
 gse
 ```
 
-
-**¡Hagamos una pequeño reto!**: ¿Cuál es el valor de a y b? Si a <- 5; b <- a; a <- 4
+**¡Hagamos una pequeño reto!**: ¿Cuál es el valor de a y b? Si a \<- 5; b \<- a; a \<- 4
 
 ```{r, collapse=FALSE}
 
@@ -482,20 +466,19 @@ print(ingrediente_1)
 
 ```
 
-
 Sin embargo, considerando que anteriomente alojamos el `ingrediente_1` en el objeto `plato`, podemos hacer lo siguiente también para observar los valores del `ingrediente_1`:
 
 ```{r}
 print(plato$ingrendiente_1)
 ```
 
-El signo `$` es otro operador importante, que nos permite indicar en qué objeto está almacenada cierta variable que queremos observar. 
+El signo `$` es otro operador importante, que nos permite indicar en qué objeto está almacenada cierta variable que queremos observar.
 
 *¿Por qué debemos utilizarlo?* Por nuestra premisa inicial: Dado que *R esta orientado a la creación de objetos*, por ende cualquier valor esta almacenado en un objeto. En este caso `ingrediente_1` lo integramos dentro del objeto `plato`.
 
 Esto último esta vinculado a un proceso fundamental en R: la creación de **data.frames**, ya que si vemos la naturaleza del objeto `plato` con la función `class(plato)`, esto nos indicará que se trata de un data.frame.
 
-Un **Data.frame** es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. *Es como "pegar" las columnas (variables) una al lado de otra*. 
+Un **Data.frame** es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. *Es como "pegar" las columnas (variables) una al lado de otra*.
 
 Para verlo con otro ejemplo, creemos un data.frame con los vectores que ya creamos antes:
 
@@ -507,7 +490,7 @@ base1
 
 ```
 
-Como puedes ver, para crear el data.frame, tanto en este ejemplo como cuando creamos el plato, usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`. 
+Como puedes ver, para crear el data.frame, tanto en este ejemplo como cuando creamos el plato, usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`.
 
 Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
 
@@ -524,7 +507,7 @@ head(base2)  # Me permite visualizar las primeras filas
 
 <br>
 
-Ahora, siguiendo con el juego de calcular. Sea z = a^2 ¿qué resultado obtenemos de a * b + z?
+Ahora, siguiendo con el juego de calcular. Sea z = a\^2 ¿qué resultado obtenemos de a \* b + z?
 
 ```{r, collapse=FALSE}
 z <- a^2 # asignar
@@ -536,8 +519,7 @@ a * b + z
 
 Antes de trabajar con datos, debemos conocer el concepto de **operadores**. Estos símbolos no son de uso exclusivo en R, pero no todos tienen el mismo significado que en otros softwares.
 
-Los operadores son símbolos que permiten, en los distintos procedimientos de procesamiento, simplificar procesos. Por ejemplo, serán útilizados cuando filtremos nuestros datos para personas de ciertas categorías, cuando calculemos variables nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos “concatenados”.
-
+Los operadores son símbolos que permiten, en los distintos procedimientos de procesamiento, simplificar procesos. Por ejemplo, serán útilizados cuando filtremos nuestros datos para personas de ciertas categorías, cuando calculemos variables nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos "concatenados".
 
 ![](../images/operadores.png)
 
@@ -556,20 +538,19 @@ p = 10; y = 5; p <= y # operatoria en objetos
 
 ```
 
-
 ## 4. Tipos de datos
 
 ### 4.1 ¿Qué son los tipos de datos?
 
-En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis. 
+En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis.
 
-**Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables** a las que corresponden. Como viste en clases, la teoría de los niveles de medición contempla cuatro tipos: 
+**Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables** a las que corresponden. Como viste en clases, la teoría de los niveles de medición contempla cuatro tipos:
 
 ![](../images/noir2.jpg)
 
 ### 4.2 ¿Qué tipos de datos encontramos en R?
 
-Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta [International Social Survey Programme del 2019](https://www.gesis.org/en/issp/home). Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).  
+Para responder esta pregunta, ¡metamos nuestras manos en los datos!. En esta oportunidad trabajaremos sobre un subset de datos del Modulo de Desigualdad Social de la encuesta [International Social Survey Programme del 2019](https://www.gesis.org/en/issp/home). Esta base la descargaremos directamente desde internet por esta vez (en futuras sesiones aprenderemos cómo cargar bases de datos).
 
 ```{r, eval=TRUE}
 #cargamos la base de datos desde internet
@@ -578,7 +559,6 @@ load(url("https://github.com/Andreas-Lafferte/descriptiva/blob/main/data/db-proc
 
 head(rand_df) # ver primeros casos de la base
 ```
-
 
 #### I) Character
 
@@ -596,17 +576,15 @@ Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar
 
 Las variables de tipo `factor` son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.
 
-
 ```{r, collapse=FALSE}
 class(rand_df$sexo)
 
 class(rand_df$ideologia)
 ```
 
-
 #### III) Numeric
 
-Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años). 
+Las variables de tipo `numeric` son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años).
 
 ```{r, collapse=FALSE}
 class(rand_df$edad)
@@ -645,7 +623,6 @@ En este práctico utilizaremos seis paquetes
 
 5.  `car`: para recodificar/agrupar valores de variables
 
-
 ```{r echo=TRUE}
 pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
                dplyr, # para manipular datos
@@ -657,20 +634,16 @@ options(scipen = 999) # para desactivar notacion cientifica
 rm(list = ls()) # para limpiar el entorno de trabajo
 ```
 
-
-Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete `pacman`). 
-
+Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se "fuerza" que esa función provenga de ese paquete (en este caso del paquete `pacman`).
 
 # Resumen
 
 Hoy aprendimos distintas herramientas básicas para utilizar el lenguaje y ambiente R. Como resumen:
 
-- Estructura de datos en R: filas, columnas, data.frames
+-   Estructura de datos en R: filas, columnas, data.frames
 
-- Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames
+-   Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames
 
-- Operadores en R
+-   Operadores en R
 
-- Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
-
-
+-   Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
