@@ -15,7 +15,7 @@ format:
     theme: [pp.scss]
     title-slide-attributes:
       visibility: false
-#      data-background-image: images/portada.jpg
+      data-background-image: images/logo.png
       data-background-size: ../images/logo.png
     auto-play-media: true
 
