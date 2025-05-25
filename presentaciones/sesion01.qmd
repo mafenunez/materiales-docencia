@@ -91,19 +91,20 @@ Un estadístico es..
 
 # [**Frecuencias**]{.white}{data-background-color="#bc3c6f"}
 
-## [<span style="background:#bc3c6f">Frencuenia ***absoluta***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">Frencuenia ***absoluta***</span>]{.white}
 
-## [<span style="background:#bc3c6f">Frencuenia ***relativa***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">Frencuenia ***relativa***</span>]{.white}
 
-## [<span style="background:#bc3c6f">Frencuenia ***acumulada***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">Frencuenia ***acumulada***</span>]{.white}
 
 # [**Medidas de Tendencia Central**]{.white}{data-background-color="#bc3c6f"}
 
-## [<span style="background:#bc3c6f">**Mediana**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Mediana**</span>]{.white}
 
-## [<span style="background:#bc3c6f">**Moda**</span>]{.white}{data-background-color="#00788d"}
 
-## [<span style="background:#bc3c6f">**Promedio o media**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Moda**</span>]{.white}
+
+## [<span style="background:#bc3c6f">**Promedio o media**</span>]{.white}
 
 ## [*Próxima sesión*]{.purple}
 

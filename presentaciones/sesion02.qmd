@@ -86,15 +86,15 @@ Un estadístico es..
 
 # [**Medidas de dispersión**]{.white}{data-background-color="#bc3c6f"}
 
-## [<span style="background:#bc3c6f">**Varianza**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Varianza**</span>]{.white}
 
-## [<span style="background:#bc3c6f">**Desviación Estándar**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Desviación Estándar**</span>]{.white}
 
 ## [Relevancia del promedio]{.white}{data-background-color="#00788d"}
 
 
 
-## [<span style="background:#bc3c6f">**Rango**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Rango**</span>]{.white}
 
 ## [*Próxima sesión*]{.purple}
 

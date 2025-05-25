@@ -91,20 +91,20 @@ Un estadístico es..
 
 # [**Medidas de posición**]{.white}{data-background-color="#bc3c6f"}
 
-## [<span style="background:#bc3c6f"> ***Q1***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f"> ***Q1***</span>]{.white}
 
-## [<span style="background:#bc3c6f"> ***Q3***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f"> ***Q3***</span>]{.white}
 
-## [<span style="background:#bc3c6f"> ***Percentiles***</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f"> ***Percentiles***</span>]{.white}
 
 # [**Medidas de forma**]{.white}{data-background-color="#bc3c6f"}
 
 ## [Distribución normal]{.white}{data-background-color="#00788d"}
 
-## [<span style="background:#bc3c6f">**Asimetría**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Asimetría**</span>]{.white}
 
-## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}
 
 
 ## [*Gracias por su atención*]{.white}{data-background-color="#bc3c6f"} 
-![](../images/logo.png){width="80%" fig-align="right"} 
+![](../images/logo.png){width="50%"} 
