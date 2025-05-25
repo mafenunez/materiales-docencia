@@ -106,5 +106,5 @@ Un estadístico es..
 ## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}
 
 
-## [*Gracias por su atención*]{.white}{data-background-color="#bc3c6f"} 
+## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 
 ![](../images/logo.png){width="50%"} 

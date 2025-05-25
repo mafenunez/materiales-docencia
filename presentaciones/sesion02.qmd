@@ -71,7 +71,7 @@ Equipo docente Estadística Descriptiva
 
 :::{.columns}
 ::: {.column width="60%"}
-![]()
+![](../images/sesion2.png)
 :::
 
 ::: {.column width="5%"}
@@ -96,6 +96,5 @@ Un estadístico es..
 
 ## [<span style="background:#bc3c6f">**Rango**</span>]{.white}
 
-## [*Próxima sesión*]{.purple}
-
-* posicion y forma
+## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 
+![](../images/logo.png){width="50%"}

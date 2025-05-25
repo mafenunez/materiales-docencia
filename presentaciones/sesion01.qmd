@@ -76,7 +76,7 @@ Equipo docente Estadística Descriptiva
 
 :::{.columns}
 ::: {.column width="60%"}
-![]()
+![](../images/sesion1.png)
 :::
 
 ::: {.column width="5%"}
@@ -106,6 +106,5 @@ Un estadístico es..
 
 ## [<span style="background:#bc3c6f">**Promedio o media**</span>]{.white}
 
-## [*Próxima sesión*]{.purple}
-
-*aladir imagen del inicio con las esradsitos marcados de dispersion y posicion
+## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 
+![](../images/logo.png){width="50%"}
