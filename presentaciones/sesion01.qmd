@@ -32,7 +32,7 @@ editor:
 :::
 ::: {.column width=80%}
 
-# [**Primera sesión de ayudantía**: <br> *Medidas de Frecuencias y Tendencia Central*]{.white} 
+# [Primera sesión de ayudantía: <br> Medidas de [***Frecuencias y Tendencia Central***]{.purple}]{.white} 
 
 ------------------------------------------------------------------------
 <br>
@@ -41,3 +41,72 @@ Equipo docente Estadística Descriptiva
 ::::
 
 ## [**Sesión de hoy**]{.purple}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+:::{.content-box-purple}
+1. **Presentación estadísticos**
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="45%"}
+**Frecuencias**: 
+
+- Absoluta
+- Relativa 
+- Acumulada
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+**Medidas de tendencia central**: 
+
+- Mediana
+- Moda 
+- Promedio o media
+:::
+
+::::
+:::
+
+:::
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
+:::{.content-box-red}
+2. **Guía de ejercicios**
+:::
+:::
+
+::::
+
+## [¿Qué es un ***estadístico***?]{.white}{data-background-color="#00788d"}
+
+*anadir imagen de estadisitocs 
+marcar los que veremos hoy 
+
+# [**Frecuencias**]{.white}{data-background-color="#bc3c6f"}
+
+## [<span style="background:#bc3c6f">Frencuenia ***absoluta***</span>]{.white}{data-background-color="#00788d"}
+
+## [Frencuenia ***relativa***]{.white}{data-background-color="#00788d"}
+
+## [Frencuenia ***acumulada***]{.white}{data-background-color="#00788d"}
+
+# [**Medidas de Tendencia Central**]{.white}{data-background-color="#bc3c6f"}
+
+## [**Mediana**]{.white}{data-background-color="#00788d"}
+
+## [**Moda**]{.white}{data-background-color="#00788d"}
+
+## [**Promedio**]{.white}{data-background-color="#00788d"}
+
+## [*Próxima sesión*]{.purple}
+
+*aladir imagen del inicio con las esradsitos marcados de dispersion y posicion
