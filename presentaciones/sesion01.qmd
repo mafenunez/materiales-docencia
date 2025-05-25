@@ -40,51 +40,37 @@ Equipo docente Estadística Descriptiva
 :::
 ::::
 
-## [**Sesión de hoy**]{.purple}
+## [**Sesión de hoy**]{.white}{data-background-color="#00788d"}
+
 
 :::: {.columns}
 
-::: {.column width="55%"}
-:::{.content-box-purple}
-1. **Presentación estadísticos**
+::: {.column width="45%" style="background-color: #bc3c6f; min-height: 100vh;"}
+### [**1. Presentación**]{.black}
+
+#### [***Frecuencias***]{.white} 
+[ Absoluta - Relativa -  Acumulada]{.black}
 
 <br>
 
-:::: {.columns}
-
-::: {.column width="45%"}
-**Frecuencias**: 
-
-- Absoluta
-- Relativa 
-- Acumulada
+#### [***Medidas de tendencia central***]{.white}
+[Mediana - Moda - Promedio o media]{.black}
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="45%"}
-**Medidas de tendencia central**: 
 
-- Mediana
-- Moda 
-- Promedio o media
+### [**2. Guía de ejercicios**]{.black}
+
+[La puedes descargar haciendo click aquí.]{.black}
 :::
-
 ::::
-:::
 
-:::
-::: {.column width="5%"}
-:::
 
-::: {.column width="35%"}
-:::{.content-box-red}
-2. **Guía de ejercicios**
-:::
-:::
 
-::::
+
 
 ## [¿Qué es un ***estadístico***?]{.white}{data-background-color="#00788d"}
 
@@ -95,17 +81,17 @@ marcar los que veremos hoy
 
 ## [<span style="background:#bc3c6f">Frencuenia ***absoluta***</span>]{.white}{data-background-color="#00788d"}
 
-## [Frencuenia ***relativa***]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">Frencuenia ***relativa***</span>]{.white}{data-background-color="#00788d"}
 
-## [Frencuenia ***acumulada***]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">Frencuenia ***acumulada***</span>]{.white}{data-background-color="#00788d"}
 
 # [**Medidas de Tendencia Central**]{.white}{data-background-color="#bc3c6f"}
 
-## [**Mediana**]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Mediana**</span>]{.white}{data-background-color="#00788d"}
 
-## [**Moda**]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Moda**</span>]{.white}{data-background-color="#00788d"}
 
-## [**Promedio**]{.white}{data-background-color="#00788d"}
+## [<span style="background:#bc3c6f">**Promedio o media**</span>]{.white}{data-background-color="#00788d"}
 
 ## [*Próxima sesión*]{.purple}
 
