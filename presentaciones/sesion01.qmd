@@ -72,7 +72,7 @@ Equipo docente Estadística Descriptiva
 
 
 
-## [¿Qué es un ***estadístico***?]{.black}{data-background-color="#00788d"}
+## [¿Qué es un ***estadístico***?]{.black}{data-background-color="#166973"}
 
 :::{.columns}
 ::: {.column width="60%"}
