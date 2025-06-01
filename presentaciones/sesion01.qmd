@@ -64,7 +64,7 @@ Equipo docente Estadística Descriptiva
 
 ### [**2. Guía de ejercicios**]{.black}
 
-[La puedes descargar haciendo click aquí.]{.black}
+
 :::
 ::::
 
@@ -72,7 +72,7 @@ Equipo docente Estadística Descriptiva
 
 
 
-## [¿Qué es un ***estadístico***?]{.black}
+## [¿Qué es un ***estadístico***?]{.black}{data-background-color="#00788d"}
 
 :::{.columns}
 ::: {.column width="60%"}
@@ -82,8 +82,11 @@ Equipo docente Estadística Descriptiva
 ::: {.column width="5%"}
 :::
 ::: {.column width="30%"}
-::: {.callout-note title="Definición"}
-Un estadístico es..
+::: {.callout-important appearance="simple" icon=false}
+
+## Definición
+
+Un estadístico es una **caraterística númerica** de nuestra muestra, la cual se obtiene a partir de **cálculos específicos** (según lo que queremos observar de nuestros datos). 
 :::
 :::
 :::
@@ -93,18 +96,170 @@ Un estadístico es..
 
 ## [<span style="background:#bc3c6f">Frencuenia ***absoluta***</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+
+Número de veces en que se presenta una característica en una muestra.  
+
+
+:::
+
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Considerando que estatus social subjetivo: Bajo, Medio, Medio, Bajo, Bajo, Alto, Alto, Medio, Medio, Medio
+
+- $x$ = Medio
+                   
+$$                   
+f^{(a)} =  \text{número de veces que aparece } x = 5
+$$ 
+***Cinco de las personas encuestadas, contestaron la categoría Medio. Esto quiere decir que estas perciben posicionarse en un estatus medio en la sociedad chilena.***  
+:::
+
 ## [<span style="background:#bc3c6f">Frencuenia ***relativa***</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+
+Proporción que se obtiene al dividir el número de casos de tal categoría por el total de casos. Si lo anterior, lo multiplicamos por 100 muestra la distribución porcentual de las observaciones
+
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- $x$ = Medio
+- $f^{(a)}$ de $x$ = 5
+
+$$
+f^{(r)} = \frac{5}{10} = 0.5
+$$
+***El 50% de las personas encuestadas contesto la categoría Medio. Esto quiere decir que dicho porcetaje considera estar en un estatus medio de la sociedad chilena. *** 
+:::
+
 ## [<span style="background:#bc3c6f">Frencuenia ***acumulada***</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+
+
+Suma sucesiva (desde la primera categoría hasta alguna de interés) de las frecuencias absolutas o relativas, desde la primera categoría hasta la categoría analizada. En general, se utiliza con variables de tipo ordinal o intervalar/de razón. 
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Siendo de menor a mayor 1 = Bajo; 2 = Medio ; 3 = Alto
+
+- Considerando que estatus social subjetivo: Bajo, Medio, Medio, Bajo, Bajo, Alto, Alto, Medio, Medio, Medio
+
+- Frecuencia acumulada de Medio
+
+
+$$
+F = f^{(a)}Bajo + f^{(a)}Medio
+$$
+$$
+F = 3 + 5 = 8
+$$
+***Ocho de las personas encuestadas contestaron las categorías Bajo y Medio. Lo que quiere decir que estas consideran estar en un estatus medio o bajo en la sociedad chilena.*** 
+
+:::
+
+##
+
+| Estadístico           | Código                                          |
+|-----------------------|--------------------------------------------------------------|
+| Frecuencia absoluta   | `table(base$variable)`                                       |
+| Frecuencia relativa   | `prop.table(table(base$variable))*100`                    |
+| Frecuencia acumulada  | `cumsum(prop.table(table(base$variable))*100`             |
+| **En conjunto** <br> *paquete `sjmisc`*| `sjmisc::frq(base$variable)`                                |
+
+
 
 # [**Medidas de Tendencia Central**]{.white}{data-background-color="#bc3c6f"}
 
 ## [<span style="background:#bc3c6f">**Mediana**</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+
+Valor central en un conjunto de datos ordenados de forma ascendente o descendente. Para calcular la mediana, se ordenan los datos y se encuentra el valor que se encuentra en la mitad de la distribución. La mediana no se ve afectada por los valores extremos y es útil cuando hay valores atípicos en los datos.
+
+- Si n es impar la mediana es el número central
+- Si n es par la mediana es el promedio de los datos del centro. 
+<br>
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto)):  2,3,4,5,6,7,4,3,8,1
+
+- Ordenado: 1, 2, 3, 3, 4, 4, 5, 6, 7, 8
+
+$$
+\text{Mediana}  = \frac{4+4}{2} = 4
+$$  
+***El 50% de las personas encuestadas contestó la categoría 4 o una menor dentro de la escala. Es decir que la mitad de la muestra considera estar más cerca de un estatus bajo en la sociedad chilena.***
+:::
+
 
 ## [<span style="background:#bc3c6f">**Moda**</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+
+Valor o valores que aparecen con mayor frecuencia en un conjunto de datos. Puede haber una moda (unimodal) si un solo valor es el más frecuente, o puede haber múltiples modas (multimodal) si hay varios valores con la misma frecuencia máxima. La moda es útil para describir la tendencia más común en un conjunto de datos categóricos o discretos.
+
+
+
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto)):  2,3,4,5,6,7,4,3,8,1
+
+
+$$
+\text{Moda} = \text{3 y 4}
+$$
+***Las personas encuestadas tienden a posicionarse en las categorías 3 y 4 dentro de la escala. Por lo que estas consideran estar en un estatus medio-bajo en la sociedad chilena.*** 
+
+:::
+
 ## [<span style="background:#bc3c6f">**Promedio o media**</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+
+Resultado de la división entre la suma de todos los valores y el total de casos en la muestra. Es de utilidad en las variables con nivel de medición intervalar o de razón y tiene la desventaja de ser fuertemente afectada por los casos extremos. Puede ser definida también como el centro de gravedad de una distribución.
+ 
+$$ 
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+$$
+
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto)):  2,3,4,5,6,7,4,3,8,1
+
+$$ 
+\bar{x} = \frac{2 + 3+4+5+6+7+4+3+8+1}{10} = 4.3
+$$
+***El promedio del estatus sociak subjetivo de las personas es 4.3 puntos. Es decir, que, en promedio, la muestra se caracteriza por posicionarse en un estatus medio-bajo en la sociedad chilena.***
+
+:::
+
+##
+
+| Estadístico         | Código                              |
+|---------------------|--------------------------------------------------|
+| Promedio o media    | `mean(base$variable, na.rm = TRUE)`              |
+| Mediana             | `median(base$variable, na.rm = TRUE)`            |
+| Moda                | `table(base$variable)`                           |
+| **En conjunto** <br> *paquete `dplyr`* | `dplyr::summarise(base, media = mean(variable), mediana = median(variable))` 
+| *r base* |  `summary(base$variable)`
+| *paquete `psych`*|`psych::describe(base$variable)`|
+
+
 
 ## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 
 ![](../images/logo.png){width="50%"}
