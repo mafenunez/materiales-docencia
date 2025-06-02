@@ -64,7 +64,6 @@ Equipo docente Estadística Descriptiva
 
 ### [**2. Guía de ejercicios**]{.black}
 
-[La puedes descargar haciendo click aquí.]{.black}
 :::
 ::::
 
@@ -72,18 +71,21 @@ Equipo docente Estadística Descriptiva
 
 
 
-## 
+## [¿Qué es un ***estadístico***?]{.black}{data-background-color="#145E6D"}
 
 :::{.columns}
 ::: {.column width="60%"}
-![]()
+![](../images/sesion3.png)
 :::
 
 ::: {.column width="5%"}
 :::
 ::: {.column width="30%"}
-::: {.callout-note title="Definición"}
-Un estadístico es..
+::: {.callout-important appearance="simple" icon=false}
+
+## Definición
+
+Un estadístico es una **caraterística númerica** de nuestra muestra, la cual se obtiene a partir de **cálculos específicos** (según lo que queremos observar de nuestros datos). 
 :::
 :::
 :::
@@ -93,9 +95,39 @@ Un estadístico es..
 
 ## [<span style="background:#bc3c6f"> ***Q1***</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+:::
+
 ## [<span style="background:#bc3c6f"> ***Q3***</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+:::
+
 ## [<span style="background:#bc3c6f"> ***Percentiles***</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+:::
+
+##
+
+| Estadístico           | Código                                          |
+|-----------------------|--------------------------------------------------------------|
+| Q1   | `quantile(base$variable,  probs = .25, na.rm = T)`                                       |
+| Q3   | `quantile(base$ingreso,   probs = .75, na.rm = T)`                    |
+|  Percentiles  | `quantile(x, probs = seq(0, 1, 0.01))`             |
+| **En conjunto** <br> *r base*| `summary(base$variable)`                
+| *paquete `dplyr`* |  `dplyr::summarise(base, q1=quantile(variable, probs = .25), q2=quantile(variable, probs = .75), percetiles = quantile(x, probs = seq(0, 1, 0.01)))`
+| *paquete `pysch`*| `psych::describe(base$variable)`|
+
 
 # [**Medidas de forma**]{.white}{data-background-color="#bc3c6f"}
 
@@ -103,7 +135,28 @@ Un estadístico es..
 
 ## [<span style="background:#bc3c6f">**Asimetría**</span>]{.white}
 
+::: {.callout-note title="Definición" icon=false}
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+:::
+
 ## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+:::
+
+##
+
+| Estadístico           | Código                                          |
+|-----------------------|--------------------------------------------------------------|
+| Asimetría <br> *paquete `moments`*  | `moments::skewness(base$variable)`                                       |
+| Curtosis  <br> *paquete `moments`*  | `moments::kurtosis(base$variable)`
+| **En conjunto** <br> *paquete `pysch`*|  `psych::describe(base$variable)`|
+
 
 
 ## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 

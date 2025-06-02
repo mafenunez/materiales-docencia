@@ -355,30 +355,24 @@
 
 </div><div class="column" style="width:45%;">
 <h3 id="guía-de-ejercicios"><span class="black"><strong>2. Guía de ejercicios</strong></span></h3>
-<p><span class="black">La puedes descargar haciendo click aquí.</span></p>
 </div>
 </div>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="qué-es-un-estadístico" class="slide level2" data-background-color="#145E6D">
+<h2><span class="black">¿Qué es un <strong><em>estadístico</em></strong>?</span></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p><img data-src=".png"></p>
+<p><img data-src="../images/sesion3.png"></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:30%;">
-<div title="Definición">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-important no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-<p>Un estadístico es..</p>
-</div>
+<p>Un estadístico es una <strong>caraterística númerica</strong> de nuestra muestra, la cual se obtiene a partir de <strong>cálculos específicos</strong> (según lo que queremos observar de nuestros datos).</p>
 </div>
 </div>
 </div>
@@ -392,12 +386,125 @@
 </section>
 <section id="q1" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"> <strong><em>Q1</em></strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="q3" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"> <strong><em>Q3</em></strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="percentiles" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"> <strong><em>Percentiles</em></strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estadístico</th>
+<th>Código</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q1</td>
+<td><code>quantile(base$variable,  probs = .25, na.rm = T)</code></td>
+</tr>
+<tr class="even">
+<td>Q3</td>
+<td><code>quantile(base$ingreso,   probs = .75, na.rm = T)</code></td>
+</tr>
+<tr class="odd">
+<td>Percentiles</td>
+<td><code>quantile(x, probs = seq(0, 1, 0.01))</code></td>
+</tr>
+<tr class="even">
+<td><strong>En conjunto</strong> <br> <em>r base</em></td>
+<td><code>summary(base$variable)</code></td>
+</tr>
+<tr class="odd">
+<td><em>paquete <code>dplyr</code></em></td>
+<td><code>dplyr::summarise(base, q1=quantile(variable, probs = .25), q2=quantile(variable, probs = .75), percetiles = quantile(x, probs = seq(0, 1, 0.01)))</code></td>
+</tr>
+<tr class="even">
+<td><em>paquete <code>pysch</code></em></td>
+<td><code>psych::describe(base$variable)</code></td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section>
 <section id="medidas-de-forma-1" class="title-slide slide level1 center" data-background-color="#bc3c6f">
@@ -409,12 +516,89 @@
 </section>
 <section id="asimetría" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"><strong>Asimetría</strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="curtosis" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"><strong>Curtosis</strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gracias-por-su-atención" class="slide level2" data-background-color="#bc3c6f">
-<h2><span class="white"><em>Gracias por su atención</em></span></h2>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estadístico</th>
+<th>Código</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Asimetría <br> <em>paquete <code>moments</code></em></td>
+<td><code>moments::skewness(base$variable)</code></td>
+</tr>
+<tr class="even">
+<td>Curtosis <br> <em>paquete <code>moments</code></em></td>
+<td><code>moments::kurtosis(base$variable)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>En conjunto</strong> <br> <em>paquete <code>pysch</code></em></td>
+<td><code>psych::describe(base$variable)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gracias-por-su-atención" class="slide level2" data-background-color="#00788d">
+<h2><span class="black"><em>Gracias por su atención</em></span></h2>
 <p><img data-src="../images/logo.png" style="width:50.0%"></p>
 <div class="quarto-auto-generated-content">
 <p><img src="../images/logo.png" class="slide-logo"></p>
