@@ -347,35 +347,29 @@
 <div class="column" style="background-color: #bc3c6f; min-height: 100vh;">
 <h3 id="presentación"><span class="black"><strong>1. Presentación</strong></span></h3>
 <h4 id="medidas-de-dispersión"><span class="white"><strong><em>Medidas de dispersión</em></strong></span></h4>
-<p><span class="black">Varianza - Desviación Estándar - Rango</span></p>
+<p><span class="black">Rango- Varianza - Desviación Estándar</span></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:45%;">
 <h3 id="guía-de-ejercicios"><span class="black"><strong>2. Guía de ejercicios</strong></span></h3>
-<p><span class="black">La puedes descargar haciendo click aquí.</span></p>
 </div>
 </div>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="qué-es-un-estadístico" class="slide level2" data-background-color="#145E6D">
+<h2><span class="black">¿Qué es un <strong><em>estadístico</em></strong>?</span></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p><img data-src=".png"></p>
+<p><img data-src="../images/sesion2.png"></p>
 </div><div class="column" style="width:5%;">
 
 </div><div class="column" style="width:30%;">
-<div title="Definición">
-<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout callout-important no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-<p>Un estadístico es..</p>
-</div>
+<p>Un estadístico es una <strong>caraterística númerica</strong> de nuestra muestra, la cual se obtiene a partir de <strong>cálculos específicos</strong> (según lo que queremos observar de nuestros datos).</p>
 </div>
 </div>
 </div>
@@ -387,23 +381,180 @@
 <h1><span class="white"><strong>Medidas de dispersión</strong></span></h1>
 
 </section>
+<section id="rango" class="slide level2">
+<h2><span class="white"><span style="background:#bc3c6f"><strong>Rango</strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>Es la diferencia entre el valor máximo y el valor mínimo en un conjunto de datos. Nos proporciona una medida básica de la variabilidad total de los datos, pero es sensible a valores atípicos.</p>
+<p><span class="math display">\[
+\text{Rango} = x_{\text{máx}} - x_{\text{mín}}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Considerando que la escala es de estatus social subjetivo es de 1 (Bajo) a 10(Alto)</li>
+</ul>
+<p><span class="math display">\[
+\text{Rango} = 10 - 1 = 9
+\]</span></p>
+<p><strong><em>El rango de valores de la variable estatus social subjetivo es 9.</em></strong></p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="varianza" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"><strong>Varianza</strong></span></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>Es el promedio de las distancias (suma de las diferencias del promedio) al cuadrado dividido en n-1 (siendo n el número total de datos observados). La varianza expresa los puntajes obtenidos en un valor distinto a la escala original, por lo que necesitan volver a esta para ser interpretados.</p>
+<p><span class="math display">\[
+s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto)): 2,3,4,5,6,7,4,3,8,1</p></li>
+<li><p><span class="math inline">\(\bar{x}\)</span> = 4.3</p></li>
+</ul>
+<p><span class="math display">\[
+s^2 = \frac{44.10}{n - 1} = \frac{44.10}{9} = 4.90
+\]</span> La varianza no es interpretable por sí misma, para eso utilizamos la <strong>desviación estándar</strong>.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="desviación-estándar" class="slide level2">
 <h2><span class="white"><span style="background:#bc3c6f"><strong>Desviación Estándar</strong></span></span></h2>
-</section>
-<section id="relevancia-del-promedio" class="slide level2" data-background-color="#00788d">
-<h2><span class="white">Relevancia del promedio</span></h2>
-</section>
-<section id="rango" class="slide level2">
-<h2><span class="white"><span style="background:#bc3c6f"><strong>Rango</strong></span></span></h2>
-</section>
-<section id="próxima-sesión" class="slide level2">
-<h2><span class="purple"><em>Próxima sesión</em></span></h2>
+<div title="Definición">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>Corresponde a la raíz cuadrada de la varianza, permite expresar los valores de la varianza en su escala de medida original de los datos. Por lo que nos permite identificar e <strong>interpretar</strong> cómo se distribuyen los datos en torno al promedio (variabilidad).</p>
+<p><span class="math display">\[
+s = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2 }
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div title="Interpretación">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Interpretación</strong></p>
+</div>
+<div class="callout-content">
+<div class="column" style="width:45%;">
+<h4 id="relevancia-del-promedio"><span class="purple">Relevancia del <strong>promedio</strong></span></h4>
 <ul>
-<li>posicion y forma</li>
+<li>La interpretación de la magnitud en que varían nuestros datos depende de la comparación con el promedio (<span class="math inline">\(\bar{x}\)</span>)</li>
 </ul>
+<table>
+<thead>
+<tr class="header">
+<th>Variabilidad <em>Alta</em></th>
+<th>Variabilidad <em>Baja</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(s \geq \bar{x}\)</span></td>
+<td><span class="math inline">\(s &lt; \bar{x}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="column" style="width:5%;">
+
+</div>
+<div class="column" style="width:45%;">
+<p><span class="math display">\[
+s = \sqrt{ 4.90 } \approx 2.21
+\]</span> <span class="math display">\[
+s &lt; \bar{x}
+\]</span></p>
+<p><strong><em>La variable de estatus social subjetivo presenta una variabilidad baja de 2.21 puntos. Así, los datos se encuentran cercanos al promedio y poco dispersos entre sí.</em></strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estadístico</th>
+<th>Código</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rango</td>
+<td><code>diff(range(base$variable))</code></td>
+</tr>
+<tr class="even">
+<td>Varianza</td>
+<td><code>var(base$variable))</code></td>
+</tr>
+<tr class="odd">
+<td>Desviación estándar</td>
+<td><code>sd(base$variable)</code></td>
+</tr>
+<tr class="even">
+<td><strong>En conjunto</strong> <br> <em>paquete <code>pysch</code></em></td>
+<td><code>psych::describe(base$variable)</code></td>
+</tr>
+<tr class="odd">
+<td><em>paquete <code>dplyr</code></em></td>
+<td><code>dplyr::summarise(base, Rango = max(variable) - min(variable), Varianza = var(variable), Desviacion_Estandar = sd(variable))</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gracias-por-su-atención" class="slide level2" data-background-color="#00788d">
+<h2><span class="black"><em>Gracias por su atención</em></span></h2>
+<p><img data-src="../images/logo.png" style="width:50.0%"></p>
 <div class="quarto-auto-generated-content">
 <p><img src="../images/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">

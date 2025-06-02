@@ -49,7 +49,7 @@ Equipo docente Estadística Descriptiva
 ### [**1. Presentación**]{.black}
 
 #### [***Medidas de dispersión***]{.white}
-[Varianza - Desviación Estándar - Rango]{.black}
+[Rango- Varianza - Desviación Estándar ]{.black}
 :::
 
 ::: {.column width="5%"}
@@ -59,7 +59,6 @@ Equipo docente Estadística Descriptiva
 
 ### [**2. Guía de ejercicios**]{.black}
 
-[La puedes descargar haciendo click aquí.]{.black}
 :::
 ::::
 
@@ -67,7 +66,7 @@ Equipo docente Estadística Descriptiva
 
 
 
-##
+## [¿Qué es un ***estadístico***?]{.black}{data-background-color="#145E6D"}
 
 :::{.columns}
 ::: {.column width="60%"}
@@ -77,8 +76,11 @@ Equipo docente Estadística Descriptiva
 ::: {.column width="5%"}
 :::
 ::: {.column width="30%"}
-::: {.callout-note title="Definición"}
-Un estadístico es..
+::: {.callout-important appearance="simple" icon=false}
+
+## Definición
+
+Un estadístico es una **caraterística númerica** de nuestra muestra, la cual se obtiene a partir de **cálculos específicos** (según lo que queremos observar de nuestros datos). 
 :::
 :::
 :::
@@ -86,15 +88,109 @@ Un estadístico es..
 
 # [**Medidas de dispersión**]{.white}{data-background-color="#bc3c6f"}
 
+## [<span style="background:#bc3c6f">**Rango**</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+Es la diferencia entre el valor máximo y el valor mínimo en un conjunto de datos. Nos proporciona una medida básica de la variabilidad total de los datos, pero es sensible a valores atípicos. 
+
+$$
+\text{Rango} = x_{\text{máx}} - x_{\text{mín}}
+$$
+
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Considerando que la escala es de estatus social subjetivo es de 1 (Bajo) a 10(Alto)
+
+$$
+\text{Rango} = 10 - 1 = 9 
+$$
+
+***El rango de valores de la variable estatus social subjetivo es 9.*** 
+:::
+
 ## [<span style="background:#bc3c6f">**Varianza**</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+Es el promedio de las distancias (suma de las diferencias del promedio) al cuadrado dividido en n-1 (siendo n el número total de datos observados). La varianza expresa los puntajes obtenidos en un valor distinto a la escala original, por lo que necesitan volver a esta para ser interpretados. 
+
+$$
+s^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2 
+$$
+
+
+ 
+:::
+
+::: {.callout-caution title="Interpretación" icon=false}
+
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto)):  2,3,4,5,6,7,4,3,8,1
+
+- $\bar{x}$ = 4.3
+
+$$
+s^2 = \frac{44.10}{n - 1} = \frac{44.10}{9} = 4.90
+$$
+La varianza no es interpretable por sí misma, para eso utilizamos la **desviación estándar**.
+:::
 
 ## [<span style="background:#bc3c6f">**Desviación Estándar**</span>]{.white}
 
-## [Relevancia del promedio]{.white}{data-background-color="#00788d"}
+::: {.callout-note title="Definición" icon=false}
+Corresponde a la raíz cuadrada de la varianza, permite expresar los valores de la varianza en su escala de medida original de los datos. Por lo que nos permite identificar e **interpretar** cómo se distribuyen los datos en torno al promedio (variabilidad).
+ 
+$$
+s = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (x_i - \bar{x})^2 }
+$$
+
+:::
+
+:::{.columns}
+
+::: {.callout-caution title="Interpretación" icon=false}
+::: {.column width="45%"}
+
+#### [Relevancia del **promedio**]{.purple}
+
+- La interpretación de la magnitud en que varían nuestros datos depende de la comparación con el promedio ($\bar{x}$) 
+
+| Variabilidad *Alta* | Variabilidad *Baja* |
+|-------------------|-------------------|
+| $s \geq \bar{x}$  | $s < \bar{x}$     |
+
+
+:::
+::: {.column width="5%"}
+
+:::
+::: {.column width="45%"}
+
+$$
+s = \sqrt{ 4.90 } \approx 2.21 
+$$
+$$
+s < \bar{x}
+$$
+
+***La variable de estatus social subjetivo presenta una variabilidad baja de 2.21 puntos. Así, los datos se encuentran cercanos al promedio y poco dispersos entre sí.*** 
+
+:::
+:::
+
+:::
 
 
 
-## [<span style="background:#bc3c6f">**Rango**</span>]{.white}
+##
+
+| Estadístico           | Código                                          |
+|-----------------------|--------------------------------------------------------------|
+| Rango   | `diff(range(base$variable))`                                       |
+| Varianza   | `var(base$variable))`                    |
+| Desviación estándar  | `sd(base$variable)`             |
+| **En conjunto** <br> *paquete `pysch`*| `psych::describe(base$variable)`                
+| *paquete `dplyr`* |  `dplyr::summarise(base, Rango = max(variable) - min(variable), Varianza = var(variable), Desviacion_Estandar = sd(variable))`|
 
 ## [*Gracias por su atención*]{.black}{data-background-color="#00788d"} 
 ![](../images/logo.png){width="50%"}
