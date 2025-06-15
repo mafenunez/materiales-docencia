@@ -96,25 +96,51 @@ Un estadístico es una **caraterística númerica** de nuestra muestra, la cual 
 ## [<span style="background:#bc3c6f"> ***Q1***</span>]{.white}
 
 ::: {.callout-note title="Definición" icon=false}
+Corresponde al valor que representa el **25% de los datos menores**. 
 :::
 
 ::: {.callout-caution title="Interpretación" icon=false}
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))
+
+- $Q1 = 3$
+
+***El 25% de la muestra contestó la categoría 3 o una categoría menor. Esto quiere decir que el 25% considera posicionarse en un estatus bajo de la sociedad chilena.*** 
+
 :::
 
 ## [<span style="background:#bc3c6f"> ***Q3***</span>]{.white}
 
 ::: {.callout-note title="Definición" icon=false}
+Corresponde al valor que representa el **75% de los datos menores**, separando dicho porcentaje de datos del 25% de los datos más altos.
 :::
 
 ::: {.callout-caution title="Interpretación" icon=false}
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))
+
+- $Q3 = 7$
+
+***El 75% de la muestra contestó la categoría 7 o una cateogoría menor. Esto quiere decir que el 75% considera posicionarse en un estatus alto o menor de la sociedad chilena. ***
 :::
 
-## [<span style="background:#bc3c6f"> ***Percentiles***</span>]{.white}
+## [<span style="background:#bc3c6f"> ***Percentiles ($P$)***</span>]{.white}
 
 ::: {.callout-note title="Definición" icon=false}
+Dividen un conjunto de datos ordenados en cien partes iguales en función de su magnitud y orden. Indica el valor por debajo del cual cae un porcentaje $P$ de los datos. 
 :::
 
 ::: {.callout-caution title="Interpretación" icon=false}
+- Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))
+
+
+- $P20 = 2$
+
+***El 20% de la muestra contestó la categoría 2 o una categoría menor. Esto quiere decir que el 20% considera posicionarse en un estatus bajo de la sociedad chilena.***
+
+- $P60 = 4$
+
+***El 60% de la muestra contestó la categoría 4 o una categoría menor. Esto quiere decir que el 60% considera posicionarse en un estatus bajo de la sociedad chilena.***
+
+
 :::
 
 ##
@@ -133,20 +159,71 @@ Un estadístico es una **caraterística númerica** de nuestra muestra, la cual 
 
 ## [Distribución normal]{.white}{data-background-color="#00788d"}
 
-## [<span style="background:#bc3c6f">**Asimetría**</span>]{.white}
+:::{.column width="45%"}
+Ideas claves:
 
-::: {.callout-note title="Definición" icon=false}
+- Distribución teórica que responde al *teorema del límite central*. 
+- **Curva normal** 
+- **Promedio** ($\bar{x}$) y **Desviación estándar** ($s$)
 :::
 
+:::{.column width="45%"}
+
+![](../images/normal.png)
+:::
+
+## [<span style="background:#bc3c6f">**Asimetría ($S$)**</span>]{.white}
+
+::: {.callout-note title="Definición" icon=false}
+Medida en que la distribución de una variable se aleja de una distribución simétrica a ambos lados de su punto central. 
+
+:::{.column width="45%"}
+
+Tipos de asimetría: 
+
+| Asimetría negativa | $S < 0$  |
+|--------------------|----------|
+|**Distribución simétrica**                    |   $S = 0$        |
+|**Asimetría positiva**                    |    $S > 0$       |
+
+:::
+
+:::{.column width="45%"}
+Intensidad:
+
+| Baja | $[-0.5; 0[$ y $]0; 0.5[$ |
+|------|--------------------------|
+| **Moderada** | $[-2; -0.5[$ y $]0.5; 2]$ |
+| **Alta** | $]-∞; -2[$ y $]2;  ∞+[$  |
+:::
+
+:::
+
+
 ::: {.callout-caution title="Interpretación" icon=false}
+Recordar: Los *SIGNOS* solo indican hacía **dónde** (izquierda o derecha) están *más concentrados* los datos. El *VALOR* indica la **intensidad** (mientras *más alejado* esté el valor de 0 más intensa es la asimetría).
+
+- $S = 0.3$: ***La distribución presenta una asimetría positiva y baja. Esto quiere decir, que posee una forma más o menos simétrica y que los casos se encuentran levemente concentrados hacia la derecha de la distribución. Por ende, las persona tienen a posicionarse en valores centrales de la escala de estatus social subjetivo.***
 :::
 
 ## [<span style="background:#bc3c6f">**Curtosis**</span>]{.white}
 
 ::: {.callout-note title="Definición" icon=false}
+Medida del grado de agrupamiento de los datos respecto al centro de una distribución. Responde al supuesto de que se presenta una distribución normal y se compara la distribución empírica con ella.
+
+Tipos de curtosis:
+
+| Platicúrtica |  $K < 0$ | Baja concentración de los datos al centro de la distribución |
+|--------------|----------|---------------------------------|
+| **Mesocúrtica**  | $K = 0$  | **Distribución normal de los datos** |
+| **Leptocúrtica** | $K > 0$  | **Alta concentración de los datos al centro de la distribución** |
 :::
 
 ::: {.callout-caution title="Interpretación" icon=false}
+
+- $K = 2.06$
+
+***La distribución es leptocúrtica. Esto quiere decir que los datos se encuentran altamente concentrados en el centro de la distribución. Por ende, las persona tienen a posicionarse, en mayor medida, en valores centrales de la escala de estatus social subjetivo.***
 :::
 
 ##

@@ -393,7 +393,7 @@
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Corresponde al valor que representa el <strong>25% de los datos menores</strong>.</p>
 </div>
 </div>
 </div>
@@ -405,7 +405,11 @@
 <p><strong>Interpretación</strong></p>
 </div>
 <div class="callout-content">
-
+<ul>
+<li><p>Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))</p></li>
+<li><p><span class="math inline">\(Q1 = 3\)</span></p></li>
+</ul>
+<p><strong><em>El 25% de la muestra contestó la categoría 3 o una categoría menor. Esto quiere decir que el 25% considera posicionarse en un estatus bajo de la sociedad chilena.</em></strong></p>
 </div>
 </div>
 </div>
@@ -420,7 +424,7 @@
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Corresponde al valor que representa el <strong>75% de los datos menores</strong>, separando dicho porcentaje de datos del 25% de los datos más altos.</p>
 </div>
 </div>
 </div>
@@ -432,14 +436,18 @@
 <p><strong>Interpretación</strong></p>
 </div>
 <div class="callout-content">
-
+<ul>
+<li><p>Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))</p></li>
+<li><p><span class="math inline">\(Q3 = 7\)</span></p></li>
+</ul>
+<p><strong><em>El 75% de la muestra contestó la categoría 7 o una cateogoría menor. Esto quiere decir que el 75% considera posicionarse en un estatus alto o menor de la sociedad chilena. </em></strong></p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="percentiles" class="slide level2">
-<h2><span class="white"><span style="background:#bc3c6f"> <strong><em>Percentiles</em></strong></span></span></h2>
+<section id="percentiles-p" class="slide level2">
+<h2><span class="white"><span style="background:#bc3c6f"> <strong><em>Percentiles (<span class="math inline">\(P\)</span>)</em></strong></span></span></h2>
 <div title="Definición">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -447,7 +455,7 @@
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Dividen un conjunto de datos ordenados en cien partes iguales en función de su magnitud y orden. Indica el valor por debajo del cual cae un porcentaje <span class="math inline">\(P\)</span> de los datos.</p>
 </div>
 </div>
 </div>
@@ -459,7 +467,15 @@
 <p><strong>Interpretación</strong></p>
 </div>
 <div class="callout-content">
-
+<ul>
+<li><p>Estatus social subjetivo (medido en una escala de 1 (Bajo) a 10(Alto))</p></li>
+<li><p><span class="math inline">\(P20 = 2\)</span></p></li>
+</ul>
+<p><strong><em>El 20% de la muestra contestó la categoría 2 o una categoría menor. Esto quiere decir que el 20% considera posicionarse en un estatus bajo de la sociedad chilena.</em></strong></p>
+<ul>
+<li><span class="math inline">\(P60 = 4\)</span></li>
+</ul>
+<p><strong><em>El 60% de la muestra contestó la categoría 4 o una categoría menor. Esto quiere decir que el 60% considera posicionarse en un estatus bajo de la sociedad chilena.</em></strong></p>
 </div>
 </div>
 </div>
@@ -513,9 +529,20 @@
 </section>
 <section id="distribución-normal" class="slide level2" data-background-color="#00788d">
 <h2><span class="white">Distribución normal</span></h2>
+<div class="column" style="width:45%;">
+<p>Ideas claves:</p>
+<ul>
+<li>Distribución teórica que responde al <em>teorema del límite central</em>.</li>
+<li><strong>Curva normal</strong></li>
+<li><strong>Promedio</strong> (<span class="math inline">\(\bar{x}\)</span>) y <strong>Desviación estándar</strong> (<span class="math inline">\(s\)</span>)</li>
+</ul>
+</div>
+<div class="column" style="width:45%;">
+<p><img data-src="../images/normal.png"></p>
+</div>
 </section>
-<section id="asimetría" class="slide level2">
-<h2><span class="white"><span style="background:#bc3c6f"><strong>Asimetría</strong></span></span></h2>
+<section id="asimetría-s" class="slide level2">
+<h2><span class="white"><span style="background:#bc3c6f"><strong>Asimetría (<span class="math inline">\(S\)</span>)</strong></span></span></h2>
 <div title="Definición">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -523,7 +550,49 @@
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Medida en que la distribución de una variable se aleja de una distribución simétrica a ambos lados de su punto central.</p>
+<div class="column" style="width:45%;">
+<p>Tipos de asimetría:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Asimetría negativa</th>
+<th><span class="math inline">\(S &lt; 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Distribución simétrica</strong></td>
+<td><span class="math inline">\(S = 0\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Asimetría positiva</strong></td>
+<td><span class="math inline">\(S &gt; 0\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="column" style="width:45%;">
+<p>Intensidad:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Baja</th>
+<th><span class="math inline">\([-0.5; 0[\)</span> y <span class="math inline">\(]0; 0.5[\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Moderada</strong></td>
+<td><span class="math inline">\([-2; -0.5[\)</span> y <span class="math inline">\(]0.5; 2]\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Alta</strong></td>
+<td><span class="math inline">\(]-∞; -2[\)</span> y <span class="math inline">\(]2;  ∞+[\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -535,7 +604,10 @@
 <p><strong>Interpretación</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Recordar: Los <em>SIGNOS</em> solo indican hacía <strong>dónde</strong> (izquierda o derecha) están <em>más concentrados</em> los datos. El <em>VALOR</em> indica la <strong>intensidad</strong> (mientras <em>más alejado</em> esté el valor de 0 más intensa es la asimetría).</p>
+<ul>
+<li><span class="math inline">\(S = 0.3\)</span>: <strong><em>La distribución presenta una asimetría positiva y baja. Esto quiere decir, que posee una forma más o menos simétrica y que los casos se encuentran levemente concentrados hacia la derecha de la distribución. Por ende, las persona tienen a posicionarse en valores centrales de la escala de estatus social subjetivo.</em></strong></li>
+</ul>
 </div>
 </div>
 </div>
@@ -550,7 +622,34 @@
 <p><strong>Definición</strong></p>
 </div>
 <div class="callout-content">
-
+<p>Medida del grado de agrupamiento de los datos respecto al centro de una distribución. Responde al supuesto de que se presenta una distribución normal y se compara la distribución empírica con ella.</p>
+<p>Tipos de curtosis:</p>
+<table>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 17%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Platicúrtica</th>
+<th><span class="math inline">\(K &lt; 0\)</span></th>
+<th>Baja concentración de los datos al centro de la distribución</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mesocúrtica</strong></td>
+<td><span class="math inline">\(K = 0\)</span></td>
+<td><strong>Distribución normal de los datos</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Leptocúrtica</strong></td>
+<td><span class="math inline">\(K &gt; 0\)</span></td>
+<td><strong>Alta concentración de los datos al centro de la distribución</strong></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -562,7 +661,10 @@
 <p><strong>Interpretación</strong></p>
 </div>
 <div class="callout-content">
-
+<ul>
+<li><span class="math inline">\(K = 2.06\)</span></li>
+</ul>
+<p><strong><em>La distribución es leptocúrtica. Esto quiere decir que los datos se encuentran altamente concentrados en el centro de la distribución. Por ende, las persona tienen a posicionarse, en mayor medida, en valores centrales de la escala de estatus social subjetivo.</em></strong></p>
 </div>
 </div>
 </div>
