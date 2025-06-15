@@ -159,7 +159,7 @@ Dividen un conjunto de datos ordenados en cien partes iguales en función de su 
 
 ## [Distribución normal]{.white}{data-background-color="#00788d"}
 
-:::{.column width="45%"}
+:::{.column width="30%"}
 Ideas claves:
 
 - Distribución teórica que responde al *teorema del límite central*. 
@@ -167,7 +167,7 @@ Ideas claves:
 - **Promedio** ($\bar{x}$) y **Desviación estándar** ($s$)
 :::
 
-:::{.column width="45%"}
+:::{.column width="60%"}
 
 ![](../images/normal.png)
 :::
