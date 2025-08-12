@@ -69,7 +69,7 @@ Estrategias de Investigación Cuantitativa
 
 - Tres momentos:
   - **Ayudantía I**
-  - **Talleres de R para consrucción de indicadores**: *proximámente*
+  - **Talleres de R para construcción de indicadores**: *proximámente*
   - **Taller de Forms y R para cuestionarios**: *proximámente*
 
 
