@@ -76,8 +76,11 @@ Estrategias de Investigación Cuantitativa
 ## [***Ayudantía I***]{.black}{data-background-color="#f4e2d4"}
 
 [**Apoyar textos de la primera prueba**]{.purple}
-- Propuesta: 2 ayudantes por texto 
-- Enfocarse en: conceptos claves, definiciones,etc.
+
+Propuesta: 
+
+- 2 ayudantes por texto 
+- Enfocarse en conceptos claves, definiciones,etc.
 - Fecha: semana del 19 de agosto 
 - Se pide una sala especial para 40 estudiantes.
 
