@@ -1,0 +1,127 @@
+---
+tpagtitle: "Reunión"
+author: "Equipo docente"
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true
+
+format:
+  revealjs:
+    theme: [pp.scss]
+    slide-number: c/t
+editor:
+  render-on-save: true
+---
+
+
+
+## {data-background-color="#1E2D59"}
+
+:::: {.columns .v-center-container}
+::: {.column width=20%}
+:::
+::: {.column width=80%}
+
+# [Primera reunión equipo docente: <br> [***organización del semestre***]{.gray}]{.white} 
+
+------------------------------------------------------------------------
+<br>
+Estrategias de Investigación Cuantitativa
+<br> 
+2025
+:::
+::::
+
+
+## [Índice de la reunión]{.black} {data-background-color="#f4e2d4"}
+
+- [***Primeros acuerdos***]{.gray} 
+- [***Su rol***]{.gray}
+- [***Planificación del semestre***]{.gray}
+- [***Varios***: asistencia a clases y disponibilidad del equipo]{.gray}
+
+
+# [***Primeros acuerdos***]{.white} {data-background-color="#1E2D59"}
+
+## [***Primeros acuerdos***]{.gray}{data-background-color="#f4e2d4"}
+
+- Canal de comunicación
+- Nuestro rato como equipo:
+  - *¿Cuáles son sus pronombres?*
+  - *¿Cómo prefieren que les digan?*
+  
+
+
+# [***Su rol***]{.white} {data-background-color="#1E2D59"}
+
+## [***Su rol***]{.gray}{data-background-color="#f4e2d4"}
+
+![](../images/esquema.png)
+
+
+
+# [***Planificación del semestre***]{.white} {data-background-color="#1E2D59"}
+
+## [***Planificación del semestre***]{.gray}{data-background-color="#f4e2d4"}
+
+- Tres momentos:
+  - **Ayudantía I**
+  - **Talleres de R para consrucción de indicadores**: *proximámente*
+  - **Taller de Forms y R para cuestionarios**: *proximámente*
+
+
+## [***Ayudantía I***]{.black}{data-background-color="#f4e2d4"}
+
+[**Apoyar textos de la primera prueba**]{.purple}
+- Propuesta: 2 ayudantes por texto 
+- Enfocarse en: conceptos claves, definiciones,etc.
+- Fecha: semana del 19 de agosto 
+- Se pide una sala especial para 40 estudiantes.
+
+##
+
+::: {.content-box-purple}
+La dinámica:
+
+1. Primero partimos juntos con una presentación muy breve de los textos (pistas de lectura)
+
+2. Nos dividimos en grupos más pequeños por texto (4 grupos), en que deben discutir preguntas, para luego responderlas en voz alta
+  - ¿En qué aporta el texto a la unidad?
+  - ¿Cómo se relaciona con lo visto en clases?
+  - ¿Cuáles son sus conceptos claves y cómo podemos entenderlo para la investigación cuantitativa? 
+  - Plantear dudas a partir de lo expuesto por sus compañeros 
+::: 
+
+## [***Apoyo en R***]{.black} {data-background-color="#f4e2d4"}
+
+[**3 Talleres:**]{.purple} 
+
+::: {.content-box-purple}
+1. Repaso
+
+2. Consrucción de indicadores simples
+
+3. Construcción de indicadores sociales: índices y escalas
+:::
+
+## [***Apoyo en Forms***]{.black} {data-background-color="#f4e2d4"}
+
+[**Trabajo final de cuestionarios**]{.purple}
+
+::: {.content-box-purple}
+- Taller de Forms de Google 
+- Breve repaso de análisis descriptivo de los datos obtenidos con su cuestionario
+:::
+
+# [***Varios***]{.white} {data-background-color="#1E2D59"}
+
+## [***Varios***]{.gray}{data-background-color="#f4e2d4"}
+
+- Asistencia a clases
+- Mi disponibilidad
+- Otros
+
+

@@ -1,0 +1,56 @@
+/*-- scss:defaults --*/
+// Colores
+$color-titulo: #333333;      // Gris oscuro para títulos
+$color-texto: #4a4a4a;       // Gris medio para texto
+$color-enlace: #1E2D59;      // Azul marino del header
+$color-fondo: #ffffff;       // Fondo blanco
+$color-bloque: #f4e2d4;      // Beige claro para bloques como "Equipo docente"
+
+// Tipografía
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Arial, sans-serif;
+
+/*-- scss:rules --*/
+body {
+  background: $color-fondo;
+  color: $color-texto;
+  font-family: $font-family-sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: $color-titulo;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+a {
+  color: $color-enlace;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Bloques tipo "equipo docente"
+.panel {
+  background-color: $color-bloque;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+// Estilo de pie de página
+footer {
+  font-size: 0.875rem;
+  text-align: center;
+  color: darken($color-texto, 20%);
+  margin-top: 2rem;
+}
