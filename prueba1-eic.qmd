@@ -1,0 +1,282 @@
+---
+title: "Análisis notas Prueba 1"
+author: "EIC"
+fontsize: 12pt
+#bibliography: "../input/mini-proyecto.bib"
+#csl: "input/bib/apa6.csl"
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-depth: 6
+    toc-expand: 6
+    toc-title: Contenidos
+    number-sections: false
+    number-depth: 6
+    theme: 
+    - sandstone
+    title-block-banner: true
+editor: visual
+lang: es
+---
+
+```{r}
+#| echo: false
+pacman::p_load(tidyverse, haven, dplyr, readxl, sjlabelled, janitor, summarytools, ggplot2)
+
+notas <- read_excel("Notas.xlsx") %>% janitor::clean_names()
+
+notas <- notas %>% set_na(., na = list(p3a = c("NA"),
+                                       p3b = c("NA")))  
+
+notas$p3a <- as.numeric(notas$p3a)
+notas$p3b <- as.numeric(notas$p3b)
+```
+
+```{r}
+#| echo: false
+print(summarytools::dfSummary(notas), method="render")
+```
+
+
+## Consistencia interna de la prueba 
+
+```{r}
+#| echo: false
+preguntas <- notas %>% select(p1_1,
+                    p1_2,
+                    p1_3,
+                    p1_4,
+                    p1_5,
+                    p2_1,
+                    p2_2,
+                    p2_3,
+                 #   p3a,
+                  #  p3b,
+                    p4)
+
+sjPlot::tab_corr(preguntas, triangle = "lower")
+psych::alpha(preguntas)
+
+preguntas_na <- notas %>% select(p1_1,
+                                 p1_2,
+                                 p1_3,
+                                 p1_4,
+                                 p1_5,
+                                 p2_1,
+                                 p2_2,
+                                 p2_3,
+                                  p3a,
+                                  p3b,
+                                 p4) 
+
+
+preguntas_na <- preguntas_na 
+
+for (v in c("p3a", "p3b")) {
+  preguntas_na[[v]][is.na(preguntas_na[[v]])] <- mean(preguntas_na[[v]], na.rm = TRUE)
+}
+
+psych::alpha(preguntas_na)
+
+```
+
+## Correlación: asistencia a clases
+
+```{r}
+#| echo: false
+asis <- notas %>% select(p1_1,
+                         p1_2,
+                         p1_3,
+                         p1_4,
+                         p1_5,
+                         p2_1,
+                         p2_2,
+                         p2_3,
+                        # p3a,
+                        # p3b,
+                         p4, asistencia_1,
+                        asistencia_2,
+                        asistencia_3,
+                        asistencia_4,
+                        asistencia_ayudantia,
+                        nota
+                         )
+
+
+sjPlot::tab_corr(asis, triangle = "lower")
+```
+
+
+### Preguntas diseños, según asistencia clase 3
+
+
+```{r}
+#| echo: false
+#| warning: false
+
+asis$asistencia_1 <- as.factor(asis$asistencia_1)
+asis$asistencia_2 <- as.factor(asis$asistencia_2)
+asis$asistencia_3 <- as.factor(asis$asistencia_3)
+asis$asistencia_ayudantia <- as.factor(asis$asistencia_ayudantia)
+
+plot1 <- ggplot(data = asis, 
+       mapping = aes(x = p1_1, fill = asistencia_3)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p1_1, segun Asistencia Clase 3 (diseños)", 
+       x = "p1: Tipo de diseño", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9)) + #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C", "#2E86C1"))# agregamos freq de cada barra por grupo
+
+plot2 <- ggplot(data = asis, 
+       mapping = aes(x = p2_1, fill = asistencia_3)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p2_1, segun Asistencia Clase 3 (diseños)", 
+       x = "p2: Validez diseño transversal", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9)) + #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C", "#2E86C1")) # agregamos freq de cada barra por grupo
+
+plot3 <- ggplot(data = asis, 
+       mapping = aes(x = p2_2, fill = asistencia_3)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p2_2, segun Asistencia Clase 3 (diseños)", 
+       x = "p2: Validez diseño longitudinal", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9))+ #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C", "#2E86C1")) # agregamos freq de cada barra por grupo
+
+plot4 <- ggplot(data = asis, 
+       mapping = aes(x = p2_3, fill = asistencia_3)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p2_3, segun Asistencia Clase 3 (diseños)", 
+       x = "p2: Validez diseño experimental", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9))+ #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C", "#2E86C1")) # agregamos freq de cada barra por grupo
+
+plott <- ggpubr::ggarrange(
+  plot1, 
+  plot2,
+  common.legend = TRUE, 
+  ncol = 2, 
+  legend = "bottom")
+
+plott
+
+plotty <- ggpubr::ggarrange(
+  plot3, 
+  plot4,
+  common.legend = TRUE, 
+  ncol = 2, 
+  legend = "bottom")
+
+plotty
+
+```
+
+### Pregunta bibliografía, asistencia ayudantía 
+
+```{r}
+#| echo: false
+#| warning: false
+
+
+p3a <- notas %>% select(p3a, asistencia_ayudantia) %>% na.omit()
+
+p3a$asistencia_ayudantia <- as.factor(p3a$asistencia_ayudantia)
+
+plotp3a <- ggplot(data = p3a, 
+       mapping = aes(x = p3a, fill = asistencia_ayudantia)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p1_1, segun Asistencia Clase 3 (diseños)", 
+       x = "p3a: Cea, niveles y escalas", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9)) + #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C", "#2E86C1")) +
+  theme(legend.position = "bottom")
+
+plotp3a
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+p3b <- notas %>% select(p3b, asistencia_ayudantia) %>% na.omit()
+
+p3b$asistencia_ayudantia <- as.factor(p3b$asistencia_ayudantia)
+
+plotp3b <- ggplot(data = p3b, 
+       mapping = aes(x = p3b, fill = asistencia_ayudantia)) + # especificamos datos y mapping 
+  geom_bar(position = "dodge2") + # agregamos geometria y especificamos posicion 
+  labs(#title ="p1_1, segun Asistencia Clase 3 (diseños)", 
+       x = "p3b: clasificar y operacionalización", 
+       y = "Frecuencia") +
+       #caption = "Fuente: Elaboración propia en base a Encuesta CEP Diciembre 2019.") +# agregamos titulo, nombres a los ejes y fuente
+  geom_text(aes(label = ..count..), stat = "count", colour = "white", 
+    vjust = 1.5, position = position_dodge(.9))  + #gregamos freq de cada barra por grupo
+  scale_fill_manual(values = c("#E74C3C","#2E86C1")) +
+  theme(legend.position = "bottom")
+plotp3b
+```
+
+
+### Aprueba 
+
+```{r}
+#| echo: false
+asis$nota <- car::recode(asis$nota, "c(4.00, 4.20, 4.40, 5.10, 5.60, 5.80)='Aprueba'; else='No aprueba'",
+                                                  as.factor=TRUE,
+                                                  levels = c("Aprueba", "No aprueba"))
+```
+
+
+```{r}
+#| echo: false
+plota <- asis %>% filter(nota=="Aprueba") %>% 
+  dplyr::select(asistencia_1, asistencia_2, asistencia_3, asistencia_ayudantia) %>%
+  sjPlot::plot_stackfrq(show.total=FALSE,
+                axis.labels=rev(c("C1.", "C2.", "C3.", "A.")),
+    geom.colors = c("#E74C3C", "#2E86C1"
+    )) +
+  theme_bw()+
+  theme(legend.position="bottom",
+        text=element_text(size=16)) +
+  labs(
+    fill = "Asistencia",
+    title = "Aprueba")
+
+plota
+```
+
+### No aprueba 
+```{r}
+#| echo: false
+plotb <- asis %>% filter(nota=="No aprueba") %>% 
+  dplyr::select(asistencia_1, asistencia_2, asistencia_3, asistencia_ayudantia) %>%
+  sjPlot::plot_stackfrq(show.total=FALSE,
+                axis.labels=rev(c("C1.", "C2.", "C3.", "A.")),
+    geom.colors = c("#E74C3C", "#2E86C1"
+    )) +
+  theme_bw()+
+  theme(legend.position="bottom",
+        text=element_text(size=16)) +
+  labs(
+    fill = "Asistencia",
+    title = "No aprueba")
+
+plotb  
+```
+
