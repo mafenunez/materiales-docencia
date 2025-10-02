@@ -108,7 +108,7 @@ sjPlot::tab_corr(asis, triangle = "lower")
 ```
 
 
-### Preguntas diseños, según asistencia clase 3
+## Preguntas diseños, según asistencia clase 3
 
 
 ```{r}
@@ -184,7 +184,7 @@ plotty
 
 ```
 
-### Pregunta bibliografía, asistencia ayudantía 
+## Pregunta bibliografía, asistencia ayudantía 
 
 ```{r}
 #| echo: false
@@ -233,7 +233,7 @@ plotp3b
 ```
 
 
-### Aprueba 
+## Aprueba 
 
 ```{r}
 #| echo: false
@@ -261,7 +261,7 @@ plota <- asis %>% filter(nota=="Aprueba") %>%
 plota
 ```
 
-### No aprueba 
+## No aprueba 
 ```{r}
 #| echo: false
 plotb <- asis %>% filter(nota=="No aprueba") %>% 
