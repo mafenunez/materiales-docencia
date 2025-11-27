@@ -41,7 +41,9 @@ Ayudantía Métodos Cuantitativos UDP
 ::::
 
 
-##  {background-image="../img/gg.png" background-size="cover" background-position="center"}
+##
+
+![](../images/gg.png)
 
 ## 
 

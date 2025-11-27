@@ -1,5 +1,5 @@
 ---
-title: "Reunión"
+tpagtitle: "Ayudantia 01"
 author: "Equipo docente"
 knitr:
   opts_chunk: 
@@ -8,22 +8,21 @@ knitr:
     R.options:
       knitr.graphics.auto_pdf: true
 
-format:
+format: 
   revealjs:
-    theme: [cuantitativa.scss]
-    slide-number: c/t
-    navigation-mode: default
+    logo: ../images/logo.png
+    slide-number: true
+    theme: [pp.scss]
     title-slide-attributes:
       visibility: false
-      auto-play-media: true
+      data-background-image: images/logo.png
+      data-background-size: ../images/logo.png
+    auto-play-media: true
 
-include-in-header: |
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 editor:
   render-on-save: true
 ---
-
 
 ## {data-background-color="#00788d"}
 :::: {.columns .v-center-container}
