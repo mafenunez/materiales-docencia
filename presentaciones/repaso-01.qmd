@@ -63,6 +63,9 @@ Lenguaje de programación
 :::
 :::
 
+::: {.column width=10%}
+:::
+
 ::: {.column width=40%}
 ::: {.callout-caution title="RStudio" icon=false}
 Interfaz de R
@@ -103,7 +106,7 @@ Interfaz de R
 
 ##
 
-![](../images/ipo.jpeg)
+![](../images/script.png)
 
 ::: {.callout-note title="Definición" icon=false}
 
@@ -142,6 +145,6 @@ pacman::p_load(tidyverse, # colección de paquetes para manipulación de datos
 
 # [**Filas, columnas, celdas y matrices**]{.white}{data-background-color="#bc3c6f"}
 
-## [Estructura de datos en R: **Matriz o Base de datos**]{.black}
+## [**Matriz o Base de datos**]{.black}
 
 ![](../images/matriz.png)
